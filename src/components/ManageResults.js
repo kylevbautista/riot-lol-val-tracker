@@ -1,49 +1,44 @@
 import React from "react";
 import { useState } from "react";
+import * as summonerApi from "../api/summonerApi";
 
 // Components
 import TextInput from "./TextInput";
 
 function ManageResults() {
-  const [sumData, setSumData] = useState();
+  const [summonerData, setSummonerData] = useState({});
 
-  const summonerName = (name) => {
-    let url =
-      "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" +
-      "kinjazzz" +
-      "?api_key=RGAPI-8aa107fa-e326-43fe-8542-f2ec63cd7d2c";
-    fetch(url)
+  const handleClick = () => {
+    summonerApi
+      .byName("kinjazzz")
       .then((data) => {
-        return data.json();
+        setSummonerData(data);
       })
-      .then((summoner) => {
-        console.log(summoner.id);
-        setSumData(summoner);
-        console.log(sumData);
-      })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
-  // Easier way to fetch and handle promises.
-  // Essentially async await is syntactical sugar for fetch and prmoises
-  //   async function byname() {
-  //     let url =
-  //       "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" +
-  //       "kinjazzz" +
-  //       "?api_key=RGAPI-74a6d702-8173-4fb5-b931-64415cc7ecb5";
-  //     const response = await fetch(url);
-  //     let data = await response.json();
-  //     console.log(data);
-  //   }
+  function test() {
+    console.log("Summoner Data", summonerData);
+    console.log("legnth", Object.keys(summonerData).length);
+  }
 
   return (
     <div className="bg-dark text-white">
       <div>NA OP GG Clone</div>
       <label htmlFor="Main Search">LOL</label>
       <TextInput />
-      <button onClick={summonerName}>Api Test</button>
+      <button onClick={handleClick}>Api Test</button>
+      <button onClick={test}>see</button>
+      {Object.keys(summonerData).length > 0 ? (
+        <div>
+          Summoner Name : {summonerData.name} <br></br>
+          Summoner Id : {summonerData.id}
+        </div>
+      ) : (
+        <div>No Data</div>
+      )}
     </div>
   );
 }
