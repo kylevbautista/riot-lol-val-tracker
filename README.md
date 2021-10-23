@@ -19,6 +19,7 @@
 
 - Avoid coupling components
 - model view controller architecture
+- Keep logic out of Presentational Components
 - Attempt to follow test driven development methodology
 
 # Getting Started with Create React App
