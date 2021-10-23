@@ -1,6 +1,6 @@
 # Applicaition that uses official Riot Games API to track League of Legends and Valorant stats.
 
-Roadmap
+### Roadmap
 
 - [x] Decide to use CRA or create own dev evironment
 - [] Research Riot Games API
