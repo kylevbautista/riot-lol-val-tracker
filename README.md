@@ -8,6 +8,12 @@
 - [] test
 - [] Incorporate Redux
 
+### Things to keep in mind
+
+- Avoid coupling components
+- model view controller architecture
+- Attempt to follow test driven development methodology
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
