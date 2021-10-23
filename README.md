@@ -3,10 +3,17 @@
 ### Roadmap
 
 - [x] Decide to use CRA or create own dev evironment
-- [] Research Riot Games API
-- [] test
-- [] test
-- [] Incorporate Redux
+- [x] Research Riot Games API
+- [] Define Presentation Components
+- [] Define Container/Logic Components
+- [] Lift states to higher order components to avoid tightly coupled components
+- [] Determine if all state mangagement is fine with React's useState
+- [] Implement Redux and determine whether this is easier to manage and offers better scalability
+- [] Research .NET Core
+- [] Research DynamoDB
+- [] Develop .NET Core API to use with DynamoDB
+- [] Implement User Accounts
+- [] Research and Implement styled components
 
 ### Things to keep in mind
 
