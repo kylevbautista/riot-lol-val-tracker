@@ -1,3 +1,8 @@
+/**
+ * This Component is a container component which handles all the logic
+ * from when and where to grab data. Data is then sent down to the
+ * appropriate presentational component
+ */
 import React from "react";
 import { useState, useEffect } from "react";
 import * as summonerApi from "../../api/summonerApi";
@@ -50,6 +55,7 @@ function ManageResults() {
     }
   };
 
+  // Gets all Match data pertaining to matching Match ID
   const getSummonerMatchInfo = (matchId) => {
     summonerApi
       .getMatchData(matchId)
