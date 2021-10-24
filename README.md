@@ -1,4 +1,4 @@
-# Applicaition that uses official Riot Games API to track League of Legends and Valorant stats.
+# Application that uses official Riot Games API to track League of Legends and Valorant stats.
 
 ### Roadmap
 
