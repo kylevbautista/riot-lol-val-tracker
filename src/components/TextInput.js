@@ -1,6 +1,10 @@
+/**
+ * Presentational Component used for any Text Input
+ * Takes in onChange prop
+ */
 import React from "react";
 
-function TextInput() {
+function TextInput({ onChange }) {
   return (
     <div className="form-group">
       <input
@@ -8,6 +12,7 @@ function TextInput() {
         type="text"
         name="placeholder"
         placeholder="Search..."
+        onChange={onChange}
       ></input>
     </div>
   );

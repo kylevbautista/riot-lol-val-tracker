@@ -2,7 +2,7 @@
 
 ### Roadmap
 
-- [x] Decide to use CRA or create own dev evironment
+- [x] Decide to use CRA or create own dev evironment with webpack
 - [x] Research Riot Games API
 - [] Define Presentation Components
 - [] Define Container/Logic Components
@@ -14,6 +14,7 @@
 - [] Develop .NET Core API to use with DynamoDB
 - [] Implement User Accounts
 - [] Research and Implement styled components
+- [] Research Service oriented architecture
 
 ### Things to keep in mind
 
