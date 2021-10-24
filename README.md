@@ -9,6 +9,7 @@
 - [] Lift states to higher order components to avoid tightly coupled components
 - [] Determine if all state mangagement is fine with React's useState
 - [] Implement Redux and determine whether this is easier to manage and offers better scalability
+- [] Create mock DB with Express for testing purposes
 - [] Research .NET Core
 - [] Research DynamoDB
 - [] Develop .NET Core API to use with DynamoDB
