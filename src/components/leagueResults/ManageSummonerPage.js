@@ -1,20 +1,16 @@
-/**
- * This Component is a container component which handles all the logic
- * from when and where to grab data. Data is then sent down to the
- * appropriate presentational component
- */
 import React from "react";
 import { useState, useEffect } from "react";
 import * as summonerApi from "../../api/summonerApi";
 
-// Components
-import TextInput from "../TextInput";
-
-function ManageResults() {
+function SummonerData(props) {
+  const summonerId = props.match.params.sumName;
   const [summonerData, setSummonerData] = useState({});
-  const [summonerName, setSummonerName] = useState("");
   const [summonerMatches, setSummonerMatches] = useState([]);
   const [summonerMatchInfo, setSummonerMatchInfo] = useState({});
+
+  useEffect(() => {
+    getSummonerbyName(summonerId);
+  }, [summonerId]);
 
   useEffect(() => {
     if (Object.keys(summonerData).length > 0) {
@@ -37,7 +33,6 @@ function ManageResults() {
     }
   }, [summonerMatchInfo]);
 
-  // gets searched summoner's user data if it exists
   const getSummonerbyName = (name) => {
     if (name.length > 0) {
       summonerApi
@@ -52,7 +47,6 @@ function ManageResults() {
       console.log("EMPTY FIELD");
     }
   };
-
   // Gets all Match data pertaining to matching Match ID
   const getSummonerMatchInfo = (matchId) => {
     summonerApi
@@ -78,24 +72,10 @@ function ManageResults() {
       });
   };
 
-  const handleText = (event) => {
-    setSummonerName(event.target.value);
-  };
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-    getSummonerbyName(summonerName);
-    console.log("text field", summonerName);
-  };
-
   return (
-    <div className="bg-dark text-white">
-      <h1>NA OP GG Clone</h1>
-      <p>League of Legends</p>
-      <form onSubmit={handleSearch}>
-        <TextInput onChange={handleText} />
-        <button type="submit">Search</button>
-      </form>
+    <div>
+      <h1>Summoner Data</h1>
+      <h1>{summonerId}</h1>
       {Object.keys(summonerData).length > 0 ? (
         <div>
           Summoner Name : {summonerData.name} <br></br>
@@ -113,8 +93,9 @@ function ManageResults() {
       ) : (
         <div>No Match data</div>
       )}
+      {/* <p>Name: {summonerMatchInfo.info.participants[0].summonerName}</p> */}
     </div>
   );
 }
 
-export default ManageResults;
+export default SummonerData;
