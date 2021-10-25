@@ -17,25 +17,23 @@ function ManageResults() {
   const [summonerMatchInfo, setSummonerMatchInfo] = useState({});
 
   useEffect(() => {
-    console.log("Summoner Data useEffect :", summonerData);
-    console.log("length", Object.keys(summonerData).length);
-    console.log("puuid: ", summonerData.puuid);
     if (Object.keys(summonerData).length > 0) {
+      console.log("Summoner Data useEffect :", summonerData);
       getSummonerMatchIds(summonerData.puuid);
     }
   }, [summonerData]);
 
   useEffect(() => {
-    console.log(summonerMatches);
-    console.log(summonerMatches[0]);
     if (summonerMatches.length > 0) {
+      console.log(summonerMatches[0]);
       getSummonerMatchInfo(summonerMatches[0]);
     }
   }, [summonerMatches]);
 
   useEffect(() => {
     if (Object.keys(summonerMatchInfo).length > 0) {
-      console.log(summonerMatchInfo);
+      console.log(summonerMatchInfo.info);
+      console.log(summonerMatchInfo.info.participants);
     }
   }, [summonerMatchInfo]);
 
