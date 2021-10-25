@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import * as summonerApi from "../../api/summonerApi";
+import SumMatchList from "./SumMatchList";
+import SumInfo from "./SumInfo";
 
 function SummonerData(props) {
   const summonerId = props.match.params.sumName;
@@ -77,21 +79,14 @@ function SummonerData(props) {
       <h1>Summoner Data</h1>
       <h1>{summonerId}</h1>
       {Object.keys(summonerData).length > 0 ? (
-        <div>
-          Summoner Name : {summonerData.name} <br></br>
-          Summoner Id : {summonerData.id} <br></br>
-        </div>
+        <SumInfo info={summonerData} />
       ) : (
-        <div>No Data</div>
+        <p>Loading...</p>
       )}
       {summonerMatches.length > 0 ? (
-        <div>
-          {summonerMatches.map((match) => (
-            <div key={match}>{match}</div>
-          ))}
-        </div>
+        <SumMatchList matches={summonerMatches} />
       ) : (
-        <div>No Match data</div>
+        <p>Loading...</p>
       )}
       {/* <p>Name: {summonerMatchInfo.info.participants[0].summonerName}</p> */}
     </div>

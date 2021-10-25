@@ -1,11 +1,11 @@
 import React from "react";
-import SearchSummonerPage from "./leagueResults/SearchSummonerPage";
+import SumSearchPage from "./leagueResults/SumSearchPage";
 
 function HomePage() {
   return (
     <div className="a">
       Riot Games Player Tracker
-      <SearchSummonerPage />
+      <SumSearchPage />
     </div>
   );
 }
