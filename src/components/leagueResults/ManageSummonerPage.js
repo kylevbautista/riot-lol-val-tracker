@@ -76,8 +76,6 @@ function SummonerData(props) {
 
   return (
     <div>
-      <h1>Summoner Data</h1>
-      <h1>{summonerId}</h1>
       {Object.keys(summonerData).length > 0 ? (
         <SumInfo info={summonerData} />
       ) : (

@@ -27,7 +27,7 @@ function SumMatchList({ participants, match }) {
     }
   }, [participants]);
 
-  console.log(match);
+  // console.log(match);
 
   return (
     <div>

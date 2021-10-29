@@ -38,7 +38,11 @@ function ManageSumMatchList({ matchList }) {
       <button onClick={see}>see</button>
       {matchInfo.length > 0 ? (
         matchInfo.map((match) => (
-          <SumMatchList match={match} participants={match.info.participants} />
+          <SumMatchList
+            key={match.metadata.matchId}
+            match={match}
+            participants={match.info.participants}
+          />
         ))
       ) : (
         <p>Loading...</p>
