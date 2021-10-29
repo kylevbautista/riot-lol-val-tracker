@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import * as summonerApi from "../../api/summonerApi";
-import SumMatchList from "./SumMatchList";
 import SumInfo from "./SumInfo";
+import ManageSumMatchList from "./ManageSumMatchList";
 
 function SummonerData(props) {
   const summonerId = props.match.params.sumName;
@@ -23,15 +23,15 @@ function SummonerData(props) {
 
   useEffect(() => {
     if (summonerMatches.length > 0) {
-      console.log(summonerMatches[0]);
+      console.log("summonerMatches useEffect", summonerMatches[0]);
       getSummonerMatchInfo(summonerMatches[0]);
     }
   }, [summonerMatches]);
 
   useEffect(() => {
     if (Object.keys(summonerMatchInfo).length > 0) {
-      console.log(summonerMatchInfo.info);
-      console.log(summonerMatchInfo.info.participants);
+      console.log("summonerMatchInfo", summonerMatchInfo.info);
+      console.log("match participants", summonerMatchInfo.info.participants);
     }
   }, [summonerMatchInfo]);
 
@@ -83,8 +83,9 @@ function SummonerData(props) {
       ) : (
         <p>Loading...</p>
       )}
-      {summonerMatches.length > 0 ? (
-        <SumMatchList matches={summonerMatches} />
+      {summonerMatches.length > 0 &&
+      Object.keys(summonerMatchInfo).length > 0 ? (
+        <ManageSumMatchList matchList={summonerMatches} />
       ) : (
         <p>Loading...</p>
       )}

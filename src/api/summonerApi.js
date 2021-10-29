@@ -1,7 +1,7 @@
 import { handleResponse, handleError } from "./apiUtils";
 const baseUrl =
   "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
-const apiKey = "RGAPI-3ad2bf6e-dbe4-40ed-a628-3850a8afd9f0";
+const apiKey = "RGAPI-ff6527e8-441b-459e-8ac0-7219d3367504";
 
 export function byName(name) {
   // to avoid es-lint error using template literal instead of classic string concatenation

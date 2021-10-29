@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
+import { Grid, ListItemText, ListItemButton } from "@mui/material";
 
 function SumInfo({ info }) {
   return (
@@ -12,24 +12,35 @@ function SumInfo({ info }) {
       ) : (
         <div>No Data</div>
       )}
-      <Grid container spacing={2} style={{ border: "solid" }}>
+      {/* <Grid
+        container
+        spacing={0}
+        style={{ border: "solid" }}
+        direction="column"
+        justifyContent="center"
+        alignItems="left"
+      >
         <Grid item xs={8}>
-          {/* <Item>xs=8</Item> */}
-          asdfasdf
+          <ListItemButton>
+            <ListItemText>xs=8</ListItemText>
+          </ListItemButton>
         </Grid>
         <Grid item xs={4}>
-          {/* <Item>xs=4</Item> */}
-          asdfasdf
+          <ListItemButton>
+            <ListItemText>xs=4</ListItemText>
+          </ListItemButton>
         </Grid>
         <Grid item xs={4}>
-          {/* <Item>xs=4</Item> */}
-          asdfasdf
+          <ListItemButton>
+            <ListItemText>xs=4</ListItemText>
+          </ListItemButton>
         </Grid>
         <Grid item xs={8}>
-          {/* <Item>xs=8</Item> */}
-          asdf
+          <ListItemButton>
+            <ListItemText>xs=8</ListItemText>
+          </ListItemButton>
         </Grid>
-      </Grid>
+      </Grid> */}
     </div>
   );
 }
