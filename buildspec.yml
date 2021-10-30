@@ -14,6 +14,8 @@ phases:
     commands:
       - echo building...
       - npm run build
+      - echo invalidating cloudfront cache
+      - npm run cloudfront-invalidation
 artifacts:
   files:
     - "**/*"

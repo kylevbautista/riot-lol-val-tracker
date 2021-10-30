@@ -21,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cloudfront-invalidation": "aws cloudfront create-invalidation --distribution-id E22MI2LJJJ0Y9K  --paths '/*'"
   },
   "eslintConfig": {
     "extends": [
