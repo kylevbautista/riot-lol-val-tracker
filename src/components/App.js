@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 function App() {
   useEffect(()=>{
-    document.body.style.backgroundColor = "black"
+    document.body.style.backgroundColor = "#121212"
   },[])
   return (
     <div className="App">
