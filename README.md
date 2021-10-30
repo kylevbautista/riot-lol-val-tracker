@@ -4,9 +4,11 @@
 
 - [x] Decide to use CRA or create own dev evironment with webpack
 - [x] Research Riot Games API
-- [] Define Presentation Components
-- [] Define Container/Logic Components
-- [] Lift states to higher order components to avoid tightly coupled components
+- [X] Set up CI/CD pipeline with AWS CodePipeline
+- [X] Host production build on AWS S3
+- [X] Define Presentation Components
+- [X] Define Container/Logic Components
+- [X] Lift states to higher order components to avoid tightly coupled components
 - [] Determine if all state mangagement is fine with React's useState
 - [] Implement Redux and determine whether this is easier to manage and offers better scalability
 - [] Create mock DB with Express for testing purposes
