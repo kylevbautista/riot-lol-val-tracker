@@ -2,8 +2,12 @@ import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import HomePage from "./HomePage";
 import ManageSummonerPage from "./leagueResults/ManageSummonerPage";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(()=>{
+    document.body.style.backgroundColor = "black"
+  },[])
   return (
     <div className="App">
       <Switch>

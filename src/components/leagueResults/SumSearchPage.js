@@ -26,7 +26,7 @@ function ManageResults() {
   };
 
   return (
-    <div className="">
+    <div className="text-white">
       <h1>NA OP GG Clone</h1>
       <p>League of Legends</p>
       <form onSubmit={handleSearch}>

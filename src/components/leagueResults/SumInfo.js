@@ -3,7 +3,7 @@ import { Grid, ListItemText, ListItemButton } from "@mui/material";
 
 function SumInfo({ info }) {
   return (
-    <div>
+    <div class="text-white">
       {Object.keys(info).length > 0 ? (
         <div>
           <h1>Summoner Name : {info.name}</h1>

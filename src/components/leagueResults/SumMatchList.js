@@ -10,6 +10,7 @@ const Img = styled("img")({
   maxWidth: "100%",
   maxHeight: "100%",
 });
+const hStyle = { color: 'red' };
 
 function SumMatchList({ participants, match }) {
   const [team1, setTeam1] = useState([]);
@@ -30,12 +31,12 @@ function SumMatchList({ participants, match }) {
   // console.log(match);
 
   return (
-    <div>
+    <div >
       <Grid container direction="column" spacing={2}>
         <Grid item xs={12}>
           <Paper
             sx={{ p: 2, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
-            style={{ backgroundColor: "gray" ,boxShadow: "0 1px 6px 1px black"}}
+            style={{ backgroundColor: "	#222222" ,boxShadow: "0 1px 6px 1px white"}}
           >
             <Grid container spacing={2}>
               <Grid item>
@@ -50,40 +51,41 @@ function SumMatchList({ participants, match }) {
                       gutterBottom
                       variant="subtitle1"
                       component="div"
+                      color="white"
                     >
                       {match.metadata.matchId}
                       {match.info.gameMode}
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
+                    <Typography variant="body2" gutterBottom color="white">
                       Full resolution 1920x1080 • JPEG
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
+                    <Typography variant="body2" gutterBottom color="white" fontWeight="600">
                       Players
                     </Typography>
                     <Grid item xs container>
                       <Grid item xs={6}>
-                        <Typography variant="subtitle1" gutterBottom>
+                        <Typography variant="subtitle1" gutterBottom color="white">
                           Team 1
                         </Typography>
                         {team1.map((summoner) => (
                           <Typography
                             key={summoner.puuid}
                             variant="body2"
-                            color="text.secondary"
+                            color="white"
                           >
                             {summoner.summonerName}
                           </Typography>
                         ))}
                       </Grid>
                       <Grid item xs={6}>
-                        <Typography variant="subtitle1" gutterBottom>
+                        <Typography variant="subtitle1" gutterBottom color="white">
                           Team 2
                         </Typography>
                         {team2.map((summoner) => (
                           <Typography
                             key={summoner.puuid}
                             variant="body2"
-                            color="text.secondary"
+                            color="white"
                           >
                             {summoner.summonerName}
                           </Typography>
