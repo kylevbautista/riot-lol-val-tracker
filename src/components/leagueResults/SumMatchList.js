@@ -35,7 +35,7 @@ function SumMatchList({ participants, match }) {
         <Grid item xs={12}>
           <Paper
             sx={{ p: 2, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
-            style={{ backgroundColor: "gray" }}
+            style={{ backgroundColor: "gray" ,boxShadow: "0 1px 6px 1px black"}}
           >
             <Grid container spacing={2}>
               <Grid item>
