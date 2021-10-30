@@ -1,5 +1,4 @@
 import React from "react";
-import { Grid, ListItemText, ListItemButton } from "@mui/material";
 
 function SumInfo({ info }) {
   return (
