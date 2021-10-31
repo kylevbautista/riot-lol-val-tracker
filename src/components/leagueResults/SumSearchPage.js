@@ -6,9 +6,11 @@
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import lol_homepage from "./lol-homepage.jpg";
 
 // Components
 import TextInput from "../TextInput";
+import HomePage from "../HomePage";
 
 function ManageResults() {
   const [summonerName, setSummonerName] = useState("");
@@ -29,7 +31,13 @@ function ManageResults() {
   return (
     <div className="text-white">
       <br></br>
-      {/* <h1>NA OP GG Clone</h1> */}
+      <img
+        src={lol_homepage}
+        alt="lol-homepage.jpg"
+        style={{ width: 600 }}
+      ></img>
+      <br></br>
+      <br></br>
       <p>League of Legends</p>
       <form onSubmit={handleSearch}>
         <TextInput onChange={handleText} value={summonerName} />

@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import { Grid, Typography, Paper, ButtonBase } from "@mui/material";
-import image1 from "./league-of-legends.jpeg";
+import lol_pic from "./league-of-legends.jpeg";
+import shib_coin from "./shib_coin.png";
 
 const Img = styled("img")({
   margin: "auto",
@@ -42,7 +43,7 @@ function SumMatchList({ participants, match }) {
             {/** Grid that contains picture */}
             <Grid item container xs={3} color="white" direction="column">
               <ButtonBase sx={{ width: 128, height: 128 }}>
-                <Img alt="complex" src={image1} />
+                <Img alt="complex" src={shib_coin} />
               </ButtonBase>
             </Grid>
             {/** Grid that contains match info */}

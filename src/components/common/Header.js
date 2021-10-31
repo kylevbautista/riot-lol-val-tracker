@@ -9,27 +9,25 @@ import {
   Badge,
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
+import { useHistory } from "react-router";
 
 function Header() {
+  const history = useHistory();
+  const handleClick = () => {
+    history.push("/");
+  };
+
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" style={{ background: "#222222" }}>
           <Toolbar>
-            {/* <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton> */}
             <IconButton
               size="large"
               edge="start"
               aria-label="Nav-Bar homepage"
               color="inherit"
+              onClick={handleClick}
             >
               <Badge badgeContent={0} color="error">
                 <HomeIcon />
