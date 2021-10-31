@@ -1,14 +1,16 @@
 # Application that uses official Riot Games API to track League of Legends and Valorant stats.
 
+# Hosted on AWS S3, served by AWS CloudFront. https://d1u51f2qashwis.cloudfront.net/
+
 ### Roadmap
 
 - [x] Decide to use CRA or create own dev evironment with webpack
 - [x] Research Riot Games API
-- [X] Set up CI/CD pipeline with AWS CodePipeline
-- [X] Host production build on AWS S3
-- [X] Define Presentation Components
-- [X] Define Container/Logic Components
-- [X] Lift states to higher order components to avoid tightly coupled components
+- [x] Set up CI/CD pipeline with AWS CodePipeline
+- [x] Host production build on AWS S3
+- [x] Define Presentation Components
+- [x] Define Container/Logic Components
+- [x] Lift states to higher order components to avoid tightly coupled components
 - [] Determine whether or not all state mangagement is fine with React's useState only
 - [] Implement Redux and determine whether this is easier to manage and offers better scalability
 - [] Create mock DB with Express for testing purposes
