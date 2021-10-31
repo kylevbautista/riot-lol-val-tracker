@@ -28,7 +28,8 @@ function ManageResults() {
 
   return (
     <div className="text-white">
-      <h1>NA OP GG Clone</h1>
+      <br></br>
+      {/* <h1>NA OP GG Clone</h1> */}
       <p>League of Legends</p>
       <form onSubmit={handleSearch}>
         <TextInput onChange={handleText} value={summonerName} />

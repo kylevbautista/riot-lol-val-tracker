@@ -6,8 +6,9 @@ import {
   Typography,
   Button,
   IconButton,
+  Badge,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
 
 function Header() {
   return (
@@ -15,7 +16,7 @@ function Header() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" style={{ background: "#222222" }}>
           <Toolbar>
-            <IconButton
+            {/* <IconButton
               size="large"
               edge="start"
               color="inherit"
@@ -23,6 +24,16 @@ function Header() {
               sx={{ mr: 2 }}
             >
               <MenuIcon />
+            </IconButton> */}
+            <IconButton
+              size="large"
+              edge="start"
+              aria-label="Nav-Bar homepage"
+              color="inherit"
+            >
+              <Badge badgeContent={0} color="error">
+                <HomeIcon />
+              </Badge>
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Riot Games Stats Tracker

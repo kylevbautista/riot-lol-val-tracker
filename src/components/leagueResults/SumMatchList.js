@@ -29,99 +29,70 @@ function SumMatchList({ participants, match }) {
 
   return (
     <div>
-      <Grid container direction="column" spacing={2}>
-        <Grid item xs={12}>
-          <Paper
-            sx={{ p: 2, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
-            style={{
-              backgroundColor: "	#222222",
-              boxShadow: "0 1px 6px 1px black",
-            }}
-          >
-            <Grid container spacing={2}>
-              <Grid item>
-                <ButtonBase sx={{ width: 128, height: 128 }}>
-                  <Img alt="complex" src={image1} />
-                </ButtonBase>
-              </Grid>
-              <Grid item xs={12} sm container>
-                <Grid item xs container direction="column" spacing={2}>
-                  <Grid item xs>
-                    <Typography
-                      gutterBottom
-                      variant="subtitle1"
-                      component="div"
-                      color="white"
-                    >
-                      {match.metadata.matchId}
-                      {match.info.gameMode}
-                    </Typography>
-                    <Typography variant="body2" gutterBottom color="white">
-                      Full resolution 1920x1080 • JPEG
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      gutterBottom
-                      color="white"
-                      fontWeight="600"
-                    >
-                      Players
-                    </Typography>
-                    <Grid item xs container>
-                      <Grid item xs={6}>
-                        <Typography
-                          variant="subtitle1"
-                          gutterBottom
-                          color="white"
-                        >
-                          Team 1
-                        </Typography>
-                        {team1.map((summoner) => (
-                          <Typography
-                            key={summoner.puuid}
-                            variant="body2"
-                            color="white"
-                          >
-                            {summoner.summonerName}
-                          </Typography>
-                        ))}
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography
-                          variant="subtitle1"
-                          gutterBottom
-                          color="white"
-                        >
-                          Team 2
-                        </Typography>
-                        {team2.map((summoner) => (
-                          <Typography
-                            key={summoner.puuid}
-                            variant="body2"
-                            color="white"
-                          >
-                            {summoner.summonerName}
-                          </Typography>
-                        ))}
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  {/* <Grid item>
-                <Typography sx={{ cursor: "pointer" }} variant="body2">
-                  Remove
-                </Typography>
-              </Grid> */}
-                </Grid>
-                {/* <Grid item>
-              <Typography variant="subtitle1" component="div">
-                $19.00
+      <Grid container spacing={0} direction="row">
+        <Paper
+          sx={{ p: 2, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
+          style={{
+            backgroundColor: "#222222",
+            boxShadow: "0 1px 6px 1px black",
+          }}
+        >
+          {/* Main Grid inside Paper Component. Holds picture, info, and teams sub grids  */}
+          <Grid item container spacing={0} direction="row">
+            {/** Grid that contains picture */}
+            <Grid item container xs={3} color="white" direction="column">
+              <ButtonBase sx={{ width: 128, height: 128 }}>
+                <Img alt="complex" src={image1} />
+              </ButtonBase>
+            </Grid>
+            {/** Grid that contains match info */}
+            <Grid item container xs={3} color="white" direction="column">
+              <Typography variant="h8" gutterBottom>
+                {match.metadata.matchId}
+                {match.info.gameMode}
               </Typography>
-            </Grid> */}
+              <Typography variant="h8" gutterBottom>
+                Ranked/Classic
+              </Typography>
+            </Grid>
+            {/** Grid that contains teams info */}
+            <Grid item container xs={6} color="white" direction="row">
+              {/** Grid that contains team 1 */}
+              <Grid item container xs={6} direction="column">
+                <Typography variant="subtitle1" gutterBottom color="white">
+                  Team 1
+                </Typography>
+                {team1.map((summoner) => (
+                  <Typography
+                    key={summoner.puuid}
+                    variant="body2"
+                    color="white"
+                  >
+                    {summoner.summonerName}
+                  </Typography>
+                ))}
+              </Grid>
+              {/** Grid that contains team 2*/}
+              <Grid item container xs={6} direction="column">
+                <Typography variant="subtitle1" gutterBottom color="white">
+                  Team 2
+                </Typography>
+                {team2.map((summoner) => (
+                  <Typography
+                    key={summoner.puuid}
+                    variant="body2"
+                    color="white"
+                  >
+                    {summoner.summonerName}
+                  </Typography>
+                ))}
               </Grid>
             </Grid>
-          </Paper>
-        </Grid>
+          </Grid>
+        </Paper>
       </Grid>
+
+      <br></br>
     </div>
   );
 }

@@ -6,18 +6,24 @@ import { useEffect } from "react";
 import Header from "./common/Header";
 
 function App() {
-  useEffect(()=>{
-    document.body.style.backgroundColor = "#121212"
-  },[])
+  useEffect(() => {
+    document.body.style.backgroundColor = "#121212";
+  }, []);
   return (
-    <div className="App">
-      <Header/>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/summoner/:sumName" component={ManageSummonerPage} />
-        {/* <Route path="/summoner" component={SummonerPage} /> */}
-        <Route component={HomePage} />
-      </Switch>
+    <div className="asd">
+      <Header />
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route
+            exact
+            path="/summoner/:sumName"
+            component={ManageSummonerPage}
+          />
+          {/* <Route path="/summoner" component={SummonerPage} /> */}
+          <Route component={HomePage} />
+        </Switch>
+      </div>
     </div>
   );
 }
