@@ -20,9 +20,12 @@ function ManageResults() {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    console.log("text field", summonerName);
+    console.log("text field:", summonerName);
     //setSearch(true);
-    history.push("summoner/" + summonerName);
+    if (summonerName.length > 0) {
+      history.push("summoner/" + summonerName);
+    }
+    setSummonerName("");
   };
 
   return (
@@ -30,7 +33,7 @@ function ManageResults() {
       <h1>NA OP GG Clone</h1>
       <p>League of Legends</p>
       <form onSubmit={handleSearch}>
-        <TextInput onChange={handleText} />
+        <TextInput onChange={handleText} value={summonerName} />
         <button type="submit" className="btn btn-primary">
           Search
         </button>

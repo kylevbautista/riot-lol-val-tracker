@@ -4,7 +4,7 @@
  */
 import React from "react";
 
-function TextInput({ onChange }) {
+function TextInput({ onChange, value }) {
   return (
     <div className="form-group">
       <input
@@ -13,6 +13,7 @@ function TextInput({ onChange }) {
         name="placeholder"
         placeholder="Search..."
         onChange={onChange}
+        value={value}
       ></input>
     </div>
   );

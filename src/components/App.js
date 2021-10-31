@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import HomePage from "./HomePage";
 import ManageSummonerPage from "./leagueResults/ManageSummonerPage";
 import { useEffect } from "react";
+import Header from "./common/Header";
 
 function App() {
   useEffect(()=>{
@@ -10,6 +11,7 @@ function App() {
   },[])
   return (
     <div className="App">
+      <Header/>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/summoner/:sumName" component={ManageSummonerPage} />
