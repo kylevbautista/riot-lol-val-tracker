@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import * as summonerApi from "../../api/summonerApi";
 import SumMatchList from "./SumMatchList";
 
-function ManageSumMatchList({ matchList }) {
+function ManageSumMatchList({ matchList, name }) {
   const [matchInfo, setMatchInfo] = useState([]);
 
   useEffect(() => {
@@ -42,6 +42,7 @@ function ManageSumMatchList({ matchList }) {
             key={match.metadata.matchId}
             match={match}
             participants={match.info.participants}
+            name={name}
           />
         ))
       ) : (

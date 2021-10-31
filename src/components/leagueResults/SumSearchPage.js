@@ -37,7 +37,6 @@ function ManageResults() {
         style={{ width: 600 }}
       ></img>
       <br></br>
-      <br></br>
       <p>League of Legends</p>
       <form onSubmit={handleSearch}>
         <TextInput onChange={handleText} value={summonerName} />

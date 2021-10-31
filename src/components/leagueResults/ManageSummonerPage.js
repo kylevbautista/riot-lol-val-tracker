@@ -87,7 +87,10 @@ function SummonerData(props) {
       )}
       {summonerMatches.length > 0 &&
       Object.keys(summonerMatchInfo).length > 0 ? (
-        <ManageSumMatchList matchList={summonerMatches} />
+        <ManageSumMatchList
+          matchList={summonerMatches}
+          name={summonerData.name}
+        />
       ) : (
         <p>Loading...</p>
       )}

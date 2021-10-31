@@ -21,7 +21,7 @@ function Header() {
     <div>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" style={{ background: "#222222" }}>
-          <Toolbar>
+          <Toolbar variant="dense">
             <IconButton
               size="large"
               edge="start"
@@ -33,7 +33,7 @@ function Header() {
                 <HomeIcon />
               </Badge>
             </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="body2" component="div" sx={{ flexGrow: 1 }}>
               Riot Games Stats Tracker
             </Typography>
             <Button color="inherit">Login</Button>

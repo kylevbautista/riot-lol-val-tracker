@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import { Grid, Typography, Paper, ButtonBase } from "@mui/material";
-import lol_pic from "./league-of-legends.jpeg";
 import shib_coin from "./shib_coin.png";
 
 const Img = styled("img")({
@@ -12,9 +11,10 @@ const Img = styled("img")({
   maxHeight: "100%",
 });
 
-function SumMatchList({ participants, match }) {
+function SumMatchList({ participants, match, name }) {
   const [team1, setTeam1] = useState([]);
   const [team2, setTeam2] = useState([]);
+  const [player, setPlayer] = useState({});
 
   useEffect(() => {
     if (participants.length > 0) {
@@ -23,6 +23,10 @@ function SumMatchList({ participants, match }) {
           setTeam1((team1) => [...team1, participants[i]]);
         } else if (participants[i].teamId === 200) {
           setTeam2((team2) => [...team2, participants[i]]);
+        }
+        if (participants[i].summonerName === name) {
+          const sum = participants[i];
+          setPlayer(sum);
         }
       }
     }
@@ -48,11 +52,32 @@ function SumMatchList({ participants, match }) {
             </Grid>
             {/** Grid that contains match info */}
             <Grid item container xs={3} color="white" direction="column">
-              <Typography variant="h8" gutterBottom>
-                {match.metadata.matchId}
-                {match.info.gameMode}
+              {player.win ? (
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  color="#00FFFF"
+                  fontWeight="600"
+                >
+                  Victory
+                </Typography>
+              ) : (
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  color="red"
+                  fontWeight="600"
+                >
+                  Defeat
+                </Typography>
+              )}
+              <Typography variant="body2" gutterBottom>
+                GameMode: {match.info.gameMode}
               </Typography>
-              <Typography variant="h8" gutterBottom>
+              <Typography variant="body2" gutterBottom>
+                KDA: {player.kills}/{player.deaths}/{player.assists}
+              </Typography>
+              <Typography variant="body2" gutterBottom>
                 Ranked/Classic
               </Typography>
             </Grid>
@@ -63,30 +88,52 @@ function SumMatchList({ participants, match }) {
                 <Typography variant="subtitle1" gutterBottom color="white">
                   Team 1
                 </Typography>
-                {team1.map((summoner) => (
-                  <Typography
-                    key={summoner.puuid}
-                    variant="body2"
-                    color="white"
-                  >
-                    {summoner.summonerName}
-                  </Typography>
-                ))}
+                {team1.map((summoner) =>
+                  summoner.summonerName === name ? (
+                    <Typography
+                      key={summoner.puuid}
+                      variant="body1"
+                      color="white"
+                      fontWeight="600"
+                    >
+                      {summoner.summonerName}
+                    </Typography>
+                  ) : (
+                    <Typography
+                      key={summoner.puuid}
+                      variant="caption"
+                      color="white"
+                    >
+                      {summoner.summonerName}
+                    </Typography>
+                  )
+                )}
               </Grid>
               {/** Grid that contains team 2*/}
               <Grid item container xs={6} direction="column">
                 <Typography variant="subtitle1" gutterBottom color="white">
                   Team 2
                 </Typography>
-                {team2.map((summoner) => (
-                  <Typography
-                    key={summoner.puuid}
-                    variant="body2"
-                    color="white"
-                  >
-                    {summoner.summonerName}
-                  </Typography>
-                ))}
+                {team2.map((summoner) =>
+                  summoner.summonerName === name ? (
+                    <Typography
+                      key={summoner.puuid}
+                      variant="body1"
+                      color="white"
+                      fontWeight="600"
+                    >
+                      {summoner.summonerName}
+                    </Typography>
+                  ) : (
+                    <Typography
+                      key={summoner.puuid}
+                      variant="caption"
+                      color="white"
+                    >
+                      {summoner.summonerName}
+                    </Typography>
+                  )
+                )}
               </Grid>
             </Grid>
           </Grid>
