@@ -29,13 +29,13 @@ function ManageSumMatchList({ matchList }) {
       });
   };
 
-  const see = () => {
-    console.log(matchInfo);
-  };
+  // const see = () => {
+  //   console.log(matchInfo);
+  // };
 
   return (
     <div>
-      <button onClick={see}>see</button>
+      {/* <button onClick={see}>see</button> */}
       {matchInfo.length > 0 ? (
         matchInfo.map((match) => (
           <SumMatchList

@@ -10,7 +10,6 @@ const Img = styled("img")({
   maxWidth: "100%",
   maxHeight: "100%",
 });
-const hStyle = { color: "red" };
 
 function SumMatchList({ participants, match }) {
   const [team1, setTeam1] = useState([]);
@@ -27,8 +26,6 @@ function SumMatchList({ participants, match }) {
       }
     }
   }, [participants]);
-
-  // console.log(match);
 
   return (
     <div>

@@ -1,3 +1,7 @@
+/**
+ * Container component for handling the logic needed
+ * to display Summoner Data
+ */
 import React from "react";
 import { useState, useEffect } from "react";
 import * as summonerApi from "../../api/summonerApi";

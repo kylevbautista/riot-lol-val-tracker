@@ -20,8 +20,6 @@ function ManageResults() {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    console.log("text field:", summonerName);
-    //setSearch(true);
     if (summonerName.length > 0) {
       history.push("summoner/" + summonerName);
     }
