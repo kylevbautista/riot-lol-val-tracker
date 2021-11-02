@@ -1,6 +1,6 @@
 # Application that uses official Riot Games API to track League of Legends and Valorant stats.
 
-# Hosted on AWS S3, served by AWS CloudFront. https://d1u51f2qashwis.cloudfront.net/
+### Hosted on AWS S3, served by AWS CloudFront. https://d1u51f2qashwis.cloudfront.net/
 
 ### Roadmap
 
