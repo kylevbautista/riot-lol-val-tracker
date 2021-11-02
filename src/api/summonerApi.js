@@ -24,3 +24,10 @@ export function getMatchData(matchId) {
   let url = `${baseUrl}${matchId}?api_key=${apiKey}`;
   return fetch(url).then(handleResponse).catch(handleError);
 }
+
+export function getRank(encryptedId) {
+  let baseUrl =
+    "https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/";
+  let url = `${baseUrl}${encryptedId}?api_key=${apiKey}`;
+  return fetch(url).then(handleResponse).catch(handleError);
+}

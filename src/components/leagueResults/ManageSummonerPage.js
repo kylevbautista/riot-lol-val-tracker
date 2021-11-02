@@ -14,6 +14,7 @@ function SummonerData(props) {
   const [summonerMatches, setSummonerMatches] = useState([]);
   const [summonerMatchInfo, setSummonerMatchInfo] = useState({});
   const [error, setError] = useState(false);
+  const [summonerRank, SetSummonerRank] = useState([]);
 
   useEffect(() => {
     getSummonerbyName(summonerId);
@@ -22,6 +23,7 @@ function SummonerData(props) {
   useEffect(() => {
     if (Object.keys(summonerData).length > 0) {
       console.log("Summoner Data useEffect :", summonerData);
+      getSummonerRank(summonerData.id);
       getSummonerMatchIds(summonerData.puuid);
     }
   }, [summonerData]);
@@ -49,7 +51,7 @@ function SummonerData(props) {
         })
         .catch((err) => {
           setError(true);
-          console.log("getSummonerbyName Player Not Found", err);
+          console.log(err);
         });
     } else {
       console.log("EMPTY FIELD");
@@ -80,11 +82,21 @@ function SummonerData(props) {
       });
   };
 
+  const getSummonerRank = (encryptedId) => [
+    summonerApi
+      .getRank(encryptedId)
+      .then((data) => {
+        SetSummonerRank(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      }),
+  ];
   return (
     <div>
       {error && <h1 style={{ color: "white" }}>PLAYER NOT FOUND</h1>}
-      {error && Object.keys(summonerData).length > 0 ? (
-        <SumInfo info={summonerData} />
+      {Object.keys(summonerData).length > 0 && summonerRank.length > 0 ? (
+        <SumInfo info={summonerData} rank={summonerRank[0]} />
       ) : error ? (
         <></>
       ) : (

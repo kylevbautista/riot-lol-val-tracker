@@ -1,6 +1,5 @@
 export async function handleResponse(response) {
   if (response.ok) {
-    console.log("asdfasdfsadfds inside handler response");
     return response.json();
   }
   if (response.status === 403) {
