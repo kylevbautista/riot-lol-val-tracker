@@ -94,6 +94,7 @@ function SummonerData(props) {
   ];
   return (
     <div>
+      <br></br>
       {error && <h1 style={{ color: "white" }}>PLAYER NOT FOUND</h1>}
       {Object.keys(summonerData).length > 0 && summonerRank.length > 0 ? (
         <SumInfo info={summonerData} rank={summonerRank[0]} />
@@ -102,6 +103,7 @@ function SummonerData(props) {
       ) : (
         <p>Loading...</p>
       )}
+      <br></br>
       {summonerMatches.length > 0 &&
       Object.keys(summonerMatchInfo).length > 0 ? (
         <ManageSumMatchList
