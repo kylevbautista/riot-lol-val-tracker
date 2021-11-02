@@ -1,5 +1,4 @@
 export async function handleResponse(response) {
-  console.log("lmalmalmalmlaml", response.status);
   if (response.ok) {
     console.log("asdfasdfsadfds inside handler response");
     return response.json();
@@ -7,7 +6,6 @@ export async function handleResponse(response) {
   if (response.status === 403) {
     // So, a server-side validation error occurred.
     // Server side validation returns a string error message, so parse as text instead of json.
-    console.log("INSIDE STATUSSS");
     const error = await response.text();
     throw new Error(error);
   }
