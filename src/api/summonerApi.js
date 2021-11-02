@@ -3,12 +3,14 @@ const baseUrl =
   "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 const apiKey = "RGAPI-010ea31f-6d68-4dab-ba60-305a12651ddb";
 
+// Get summoner data given a name
 export function byName(name) {
   // to avoid es-lint error using template literal instead of classic string concatenation
   let url = `${baseUrl}${name}?api_key=${apiKey}`;
   return fetch(url).then(handleResponse).catch(handleError);
 }
 
+// Get 20 most recent match id's for a summoner given a summoner's puuid
 export function getMatchIds(puuid) {
   let baseUrl =
     "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/";
@@ -16,6 +18,7 @@ export function getMatchIds(puuid) {
   return fetch(url).then(handleResponse).catch(handleError);
 }
 
+// Get the match details for a given match id
 export function getMatchData(matchId) {
   let baseUrl = "https://americas.api.riotgames.com/lol/match/v5/matches/";
   let url = `${baseUrl}${matchId}?api_key=${apiKey}`;

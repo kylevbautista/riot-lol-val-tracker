@@ -13,6 +13,7 @@ function SummonerData(props) {
   const [summonerData, setSummonerData] = useState({});
   const [summonerMatches, setSummonerMatches] = useState([]);
   const [summonerMatchInfo, setSummonerMatchInfo] = useState({});
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getSummonerbyName(summonerId);
@@ -47,7 +48,8 @@ function SummonerData(props) {
           setSummonerData(data);
         })
         .catch((err) => {
-          console.log("Player Not Found", err);
+          setError(true);
+          console.log("getSummonerbyName Player Not Found", err);
         });
     } else {
       console.log("EMPTY FIELD");
@@ -80,8 +82,11 @@ function SummonerData(props) {
 
   return (
     <div>
-      {Object.keys(summonerData).length > 0 ? (
+      {error && <h1 style={{ color: "white" }}>PLAYER NOT FOUND</h1>}
+      {error && Object.keys(summonerData).length > 0 ? (
         <SumInfo info={summonerData} />
+      ) : error ? (
+        <></>
       ) : (
         <p>Loading...</p>
       )}
@@ -91,6 +96,8 @@ function SummonerData(props) {
           matchList={summonerMatches}
           name={summonerData.name}
         />
+      ) : error ? (
+        <></>
       ) : (
         <p>Loading...</p>
       )}
