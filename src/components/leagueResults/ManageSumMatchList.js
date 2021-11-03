@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 import * as summonerApi from "../../api/summonerApi";
 import SumMatchList from "./SumMatchList";

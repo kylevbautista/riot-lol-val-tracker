@@ -10,11 +10,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 // bootstrap css library
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// Redux init
+import configureStore from "./redux/configureStore";
+import { Provider as ReduxProvider } from "react-redux";
+const store = configureStore();
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <ReduxProvider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </ReduxProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
