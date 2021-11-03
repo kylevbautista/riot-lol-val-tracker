@@ -21,6 +21,11 @@ function SummonerData(props) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    if (Object.keys(props.reduxsumdata).length > 0)
+      console.log("REDUX sumData:", props.reduxsumdata);
+  }, [props.reduxsumdata]);
+
+  useEffect(() => {
     getSummonerbyName(summonerId);
   }, [summonerId]);
 
@@ -29,7 +34,6 @@ function SummonerData(props) {
       console.log("Summoner Data useEffect :", summonerData);
       getSummonerMatchIds(summonerData.puuid);
     }
-    console.log("reduxxx", props.reduxsumdata);
   }, [summonerData]);
 
   useEffect(() => {
