@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import * as summonerApi from "../../api/summonerApi";
 import SumInfo from "./SumInfo";
 import ManageSumMatchList from "./ManageSumMatchList";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 function SummonerData(props) {
   const summonerId = props.match.params.sumName;
@@ -14,7 +16,6 @@ function SummonerData(props) {
   const [summonerMatches, setSummonerMatches] = useState([]);
   const [summonerMatchInfo, setSummonerMatchInfo] = useState({});
   const [error, setError] = useState(false);
-  const [summonerRank, SetSummonerRank] = useState([]);
 
   useEffect(() => {
     getSummonerbyName(summonerId);
@@ -23,7 +24,6 @@ function SummonerData(props) {
   useEffect(() => {
     if (Object.keys(summonerData).length > 0) {
       console.log("Summoner Data useEffect :", summonerData);
-      getSummonerRank(summonerData.id);
       getSummonerMatchIds(summonerData.puuid);
     }
   }, [summonerData]);
@@ -82,26 +82,20 @@ function SummonerData(props) {
       });
   };
 
-  const getSummonerRank = (encryptedId) => [
-    summonerApi
-      .getRank(encryptedId)
-      .then((data) => {
-        SetSummonerRank(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      }),
-  ];
   return (
     <div>
       <br></br>
-      {error && <h1 style={{ color: "white" }}>PLAYER NOT FOUND</h1>}
-      {Object.keys(summonerData).length > 0 && summonerRank.length > 0 ? (
-        <SumInfo info={summonerData} rank={summonerRank[0]} />
+      {error && (
+        <h1 style={{ color: "white" }}>OOPS.... SOMETHING WENT WRONG</h1>
+      )}
+      {Object.keys(summonerData).length > 0 ? (
+        <SumInfo info={summonerData} />
       ) : error ? (
         <></>
       ) : (
-        <p>Loading...</p>
+        <Box sx={{ width: "100%" }}>
+          <LinearProgress />
+        </Box>
       )}
       <br></br>
       {summonerMatches.length > 0 &&
@@ -112,8 +106,12 @@ function SummonerData(props) {
         />
       ) : error ? (
         <></>
+      ) : summonerMatches.length === 0 ? (
+        <h1 style={{ color: "white" }}>No Matches Found</h1>
       ) : (
-        <p>Loading...</p>
+        <Box sx={{ width: "100%" }}>
+          <LinearProgress />
+        </Box>
       )}
       {/* <p>Name: {summonerMatchInfo.info.participants[0].summonerName}</p> */}
     </div>
