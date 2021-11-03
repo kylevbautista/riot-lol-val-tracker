@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import * as summonerActions from "../../redux/actions/summonerActions";
 import { useState, useEffect } from "react";
+import { bindActionCreators } from "redux";
 import * as summonerApi from "../../api/summonerApi";
 import SumMatchList from "./SumMatchList";
 
-function ManageSumMatchList({ matchList, name, id }) {
+function ManageSumMatchList({ matchList, name, id, actions }) {
   const [matchInfo, setMatchInfo] = useState([]);
 
   useEffect(() => {
@@ -53,4 +55,21 @@ function ManageSumMatchList({ matchList, name, id }) {
   );
 }
 
-export default ManageSumMatchList;
+function mapStateToProps(state) {
+  return {
+    reduxsumdata: state.sumData,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      getreduxsumdata: bindActionCreators(
+        summonerActions.loadSummonerName,
+        dispatch
+      ),
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageSumMatchList);

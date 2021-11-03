@@ -4,6 +4,9 @@
  */
 import React from "react";
 import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import * as summonerActions from "../../redux/actions/summonerActions";
+import { bindActionCreators } from "redux";
 import * as summonerApi from "../../api/summonerApi";
 import SumInfo from "./SumInfo";
 import ManageSumMatchList from "./ManageSumMatchList";
@@ -26,6 +29,7 @@ function SummonerData(props) {
       console.log("Summoner Data useEffect :", summonerData);
       getSummonerMatchIds(summonerData.puuid);
     }
+    console.log("reduxxx", props.reduxsumdata);
   }, [summonerData]);
 
   useEffect(() => {
@@ -56,6 +60,7 @@ function SummonerData(props) {
     } else {
       console.log("EMPTY FIELD");
     }
+    props.actions.getreduxsumdata(name);
   };
   // Gets all Match data pertaining to matching Match ID
   const getSummonerMatchInfo = (matchId) => {
@@ -118,4 +123,20 @@ function SummonerData(props) {
   );
 }
 
-export default SummonerData;
+function mapStateToProps(state) {
+  return {
+    reduxsumdata: state.sumData,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      getreduxsumdata: bindActionCreators(
+        summonerActions.loadSummonerName,
+        dispatch
+      ),
+    },
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SummonerData);

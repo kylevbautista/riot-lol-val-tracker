@@ -9,7 +9,8 @@ export function loadSummonerNameSucces(sumData) {
 // thunks
 export function loadSummonerName(name) {
   return function (dispatch) {
-    summonerApi.byName
+    summonerApi
+      .byName(name)
       .then((data) => {
         dispatch(loadSummonerNameSucces(data));
       })
