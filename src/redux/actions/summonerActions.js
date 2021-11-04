@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import * as summonerApi from "../../api/summonerApi";
+import { beginApiCall } from "./apiStatusAction";
 
 // actions creators
 export function loadSummonerNameSucces(sumData) {
@@ -52,6 +53,7 @@ export function loadSummonerMatchIds(puuid) {
 
 export function loadsummonerRankInfo(encryptedId) {
   return function (dispatch) {
+    dispatch(beginApiCall());
     summonerApi
       .getRank(encryptedId)
       .then((data) => {

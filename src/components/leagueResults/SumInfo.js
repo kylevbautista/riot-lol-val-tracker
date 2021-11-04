@@ -1,6 +1,9 @@
 import React from "react";
 import * as summonerApi from "../../api/summonerApi";
 import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import * as apiStatusAction from "../../redux/actions/apiStatusAction";
+import { bindActionCreators } from "redux";
 import { styled } from "@mui/material/styles";
 import { Grid, Paper, ButtonBase } from "@mui/material";
 import shib_coin from "./shib_coin.png";
@@ -12,7 +15,7 @@ const Img = styled("img")({
   maxHeight: "100%",
 });
 
-function SumInfo({ info, rank, exists }) {
+function SumInfo({ info, rank, exists, ...props }) {
   const [summonerRank, setSummonerRank] = useState([]);
   useEffect(() => {
     if (Object.keys(info).length > 0) {
@@ -24,7 +27,7 @@ function SumInfo({ info, rank, exists }) {
       .getRank(encryptedId)
       .then((data) => {
         setSummonerRank(data);
-        console.log("DATA", data);
+        // console.log("DATA", data);
       })
       .catch((err) => {
         console.log(err);
@@ -100,4 +103,18 @@ function SumInfo({ info, rank, exists }) {
   );
 }
 
-export default SumInfo;
+function mapStateToProps(state) {
+  return {
+    summoner: state.apiCallsInProgress,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      apiInProgress: bindActionCreators(apiStatusAction.beginApiCall, dispatch),
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SumInfo);

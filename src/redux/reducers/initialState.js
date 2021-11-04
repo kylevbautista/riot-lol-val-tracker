@@ -6,4 +6,5 @@ export default {
     matchIds: [],
     error: false,
   },
+  apiCallsInProgress: 0,
 };

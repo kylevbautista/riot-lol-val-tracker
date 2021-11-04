@@ -17,10 +17,10 @@ function SummonerData(props) {
   const summonerId = props.match.params.sumName;
   const [summonerMatchInfo, setSummonerMatchInfo] = useState({});
 
-  useEffect(() => {
-    if (Object.keys(props.summoner).length > 0)
-      console.log("REDUX sumData:", props.summoner);
-  }, [props.summoner]);
+  // useEffect(() => {
+  //   if (Object.keys(props.summoner).length > 0)
+  //     console.log("REDUX sumData:", props.summoner);
+  // }, [props.summoner]);
 
   useEffect(() => {
     getSummonerbyName(summonerId);
@@ -38,12 +38,12 @@ function SummonerData(props) {
     }
   }, [props.summoner.matchIds]);
 
-  useEffect(() => {
-    if (Object.keys(summonerMatchInfo).length > 0) {
-      console.log("summonerMatchInfo", summonerMatchInfo.info);
-      console.log("match participants", summonerMatchInfo.info.participants);
-    }
-  }, [summonerMatchInfo]);
+  // useEffect(() => {
+  //   if (Object.keys(summonerMatchInfo).length > 0) {
+  //     console.log("summonerMatchInfo", summonerMatchInfo.info);
+  //     console.log("match participants", summonerMatchInfo.info.participants);
+  //   }
+  // }, [summonerMatchInfo]);
 
   const getSummonerbyName = (name) => {
     props.actions.getSumData(name);
