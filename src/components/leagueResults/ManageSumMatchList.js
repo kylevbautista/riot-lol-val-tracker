@@ -1,3 +1,7 @@
+/**
+ * Container component that handles logic needed to
+ * get and display match list data
+ */
 import React from "react";
 import { connect } from "react-redux";
 import * as summonerActions from "../../redux/actions/summonerActions";
@@ -6,7 +10,7 @@ import { bindActionCreators } from "redux";
 import * as summonerApi from "../../api/summonerApi";
 import SumMatchList from "./SumMatchList";
 
-function ManageSumMatchList({ matchList, name, id, actions }) {
+function ManageSumMatchList({ matchList, name }) {
   const [matchInfo, setMatchInfo] = useState([]);
 
   useEffect(() => {
@@ -32,13 +36,8 @@ function ManageSumMatchList({ matchList, name, id, actions }) {
       });
   };
 
-  // const see = () => {
-  //   console.log(matchInfo);
-  // };
-
   return (
     <div>
-      {/* <button onClick={see}>see</button> */}
       {matchInfo.length > 0 ? (
         matchInfo.map((match) => (
           <SumMatchList

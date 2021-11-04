@@ -28,7 +28,6 @@ function SummonerData(props) {
 
   useEffect(() => {
     if (Object.keys(props.summoner.data).length > 0) {
-      console.log("Summoner Data useEffect :", props.summoner.data);
       getSummonerMatchIds(props.summoner.data.puuid);
     }
   }, [props.summoner.data]);
@@ -62,7 +61,6 @@ function SummonerData(props) {
   };
 
   // grabs searched summoner's last 20 matches
-  // returns match ids
   const getSummonerMatchIds = (puuid) => {
     props.actions.getMatchList(puuid);
   };
@@ -98,7 +96,6 @@ function SummonerData(props) {
           <LinearProgress />
         </Box>
       )}
-      {/* <p>Name: {summonerMatchInfo.info.participants[0].summonerName}</p> */}
     </div>
   );
 }

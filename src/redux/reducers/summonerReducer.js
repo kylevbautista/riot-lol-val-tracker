@@ -9,6 +9,8 @@ export default function summonerReducer(state = initialState.summoner, action) {
       return { ...state, matchIds: action.matchIds };
     case types.API_CALL_ERROR:
       return { ...state, error: true };
+    case types.LOAD_SUMMONER_RANK_SUCCESS:
+      return { ...state, rankInfo: action.rankInfo };
     default:
       return state;
   }

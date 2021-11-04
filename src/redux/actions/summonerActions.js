@@ -14,6 +14,10 @@ export function summonerApiError() {
   return { type: types.API_CALL_ERROR };
 }
 
+export function loadsummonerRankInfoSuccess(rankInfo) {
+  return { type: types.LOAD_SUMMONER_RANK_SUCCESS, rankInfo: rankInfo };
+}
+
 // thunks
 export function loadSummonerName(name) {
   return function (dispatch) {
@@ -21,9 +25,11 @@ export function loadSummonerName(name) {
       .byName(name)
       .then((data) => {
         dispatch(loadSummonerNameSucces(data));
+        dispatch(loadsummonerRankInfo(data.id));
       })
       .catch((err) => {
         //throw err;
+        console.log("loadSummonerName Fail");
         dispatch(summonerApiError());
       });
   };
@@ -38,6 +44,21 @@ export function loadSummonerMatchIds(puuid) {
       })
       .catch((err) => {
         //throw err;
+        console.log("loadSummonerMatchIds Fail");
+        dispatch(summonerApiError());
+      });
+  };
+}
+
+export function loadsummonerRankInfo(encryptedId) {
+  return function (dispatch) {
+    summonerApi
+      .getRank(encryptedId)
+      .then((data) => {
+        dispatch(loadsummonerRankInfoSuccess(data));
+      })
+      .catch((err) => {
+        console.log("loadsummonerRankInfo Fail");
         dispatch(summonerApiError());
       });
   };
