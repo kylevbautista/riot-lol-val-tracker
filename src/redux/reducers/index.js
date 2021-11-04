@@ -6,7 +6,7 @@ import summonerReducer from "./summonerReducer";
 
 const rootReducer = combineReducers({
   // reducing/combining all states into one root state
-  sumData: summonerReducer,
+  summoner: summonerReducer,
 });
 
 export default rootReducer;

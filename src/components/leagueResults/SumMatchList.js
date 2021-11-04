@@ -16,6 +16,12 @@ function SumMatchList({ participants, match, name }) {
   const [team2, setTeam2] = useState([]);
   const [player, setPlayer] = useState({});
 
+  const data = {
+    data: {
+      datas: [],
+    },
+  };
+
   useEffect(() => {
     if (participants.length > 0) {
       for (let i = 0; i < participants.length; i++) {

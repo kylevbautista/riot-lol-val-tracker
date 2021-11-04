@@ -15,33 +15,29 @@ import LinearProgress from "@mui/material/LinearProgress";
 
 function SummonerData(props) {
   const summonerId = props.match.params.sumName;
-  const [summonerData, setSummonerData] = useState({});
-  const [summonerMatches, setSummonerMatches] = useState([]);
   const [summonerMatchInfo, setSummonerMatchInfo] = useState({});
-  const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (Object.keys(props.reduxsumdata).length > 0)
-      console.log("REDUX sumData:", props.reduxsumdata);
-  }, [props.reduxsumdata]);
+    if (Object.keys(props.summoner).length > 0)
+      console.log("REDUX sumData:", props.summoner);
+  }, [props.summoner]);
 
   useEffect(() => {
     getSummonerbyName(summonerId);
   }, [summonerId]);
 
   useEffect(() => {
-    if (Object.keys(summonerData).length > 0) {
-      console.log("Summoner Data useEffect :", summonerData);
-      getSummonerMatchIds(summonerData.puuid);
+    if (Object.keys(props.summoner.data).length > 0) {
+      console.log("Summoner Data useEffect :", props.summoner.data);
+      getSummonerMatchIds(props.summoner.data.puuid);
     }
-  }, [summonerData]);
+  }, [props.summoner.data]);
 
   useEffect(() => {
-    if (summonerMatches.length > 0) {
-      console.log("summonerMatches useEffect", summonerMatches[0]);
-      getSummonerMatchInfo(summonerMatches[0]);
+    if (props.summoner.matchIds.length > 0) {
+      getSummonerMatchInfo(props.summoner.matchIds[0]);
     }
-  }, [summonerMatches]);
+  }, [props.summoner.matchIds]);
 
   useEffect(() => {
     if (Object.keys(summonerMatchInfo).length > 0) {
@@ -51,20 +47,7 @@ function SummonerData(props) {
   }, [summonerMatchInfo]);
 
   const getSummonerbyName = (name) => {
-    if (name.length > 0) {
-      summonerApi
-        .byName(name)
-        .then((data) => {
-          setSummonerData(data);
-        })
-        .catch((err) => {
-          setError(true);
-          console.log(err);
-        });
-    } else {
-      console.log("EMPTY FIELD");
-    }
-    props.actions.getreduxsumdata(name);
+    props.actions.getSumData(name);
   };
   // Gets all Match data pertaining to matching Match ID
   const getSummonerMatchInfo = (matchId) => {
@@ -81,25 +64,18 @@ function SummonerData(props) {
   // grabs searched summoner's last 20 matches
   // returns match ids
   const getSummonerMatchIds = (puuid) => {
-    summonerApi
-      .getMatchIds(puuid)
-      .then((data) => {
-        setSummonerMatches(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    props.actions.getMatchList(puuid);
   };
 
   return (
     <div>
       <br></br>
-      {error && (
+      {props.summoner.error && (
         <h1 style={{ color: "white" }}>OOPS.... SOMETHING WENT WRONG</h1>
       )}
-      {Object.keys(summonerData).length > 0 ? (
-        <SumInfo info={summonerData} />
-      ) : error ? (
+      {Object.keys(props.summoner.data).length > 0 ? (
+        <SumInfo info={props.summoner.data} />
+      ) : props.summoner.error ? (
         <></>
       ) : (
         <Box sx={{ width: "100%" }}>
@@ -107,15 +83,15 @@ function SummonerData(props) {
         </Box>
       )}
       <br></br>
-      {summonerMatches.length > 0 &&
+      {props.summoner.matchIds.length > 0 &&
       Object.keys(summonerMatchInfo).length > 0 ? (
         <ManageSumMatchList
-          matchList={summonerMatches}
-          name={summonerData.name}
+          matchList={props.summoner.matchIds}
+          name={props.summoner.data.name}
         />
-      ) : error ? (
+      ) : props.summoner.error ? (
         <></>
-      ) : summonerMatches.length === 0 ? (
+      ) : props.summoner.matchIds.length === 0 ? (
         <h1 style={{ color: "white" }}>No Matches Found</h1>
       ) : (
         <Box sx={{ width: "100%" }}>
@@ -129,15 +105,19 @@ function SummonerData(props) {
 
 function mapStateToProps(state) {
   return {
-    reduxsumdata: state.sumData,
+    summoner: state.summoner,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      getreduxsumdata: bindActionCreators(
+      getSumData: bindActionCreators(
         summonerActions.loadSummonerName,
+        dispatch
+      ),
+      getMatchList: bindActionCreators(
+        summonerActions.loadSummonerMatchIds,
         dispatch
       ),
     },

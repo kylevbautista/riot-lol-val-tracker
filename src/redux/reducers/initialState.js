@@ -1,3 +1,8 @@
 export default {
-  sumData: [],
+  summoner: {
+    data: {},
+    test: {},
+    matchIds: [],
+    error: false,
+  },
 };
