@@ -15,7 +15,6 @@ import LinearProgress from "@mui/material/LinearProgress";
 
 function SummonerData(props) {
   const summonerId = props.match.params.sumName;
-  const [summonerMatchInfo, setSummonerMatchInfo] = useState({});
 
   useEffect(() => {
     getSummonerbyName(summonerId);
