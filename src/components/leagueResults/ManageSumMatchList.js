@@ -10,6 +10,7 @@ import { bindActionCreators } from "redux";
 import * as summonerApi from "../../api/summonerApi";
 import { beginApiCall } from "../../redux/actions/apiStatusAction";
 import SumMatchList from "./SumMatchList";
+import { Grid } from "@mui/material";
 
 function ManageSumMatchList({ matchList, name, actions }) {
   const [matchInfo, setMatchInfo] = useState([]);
@@ -41,7 +42,17 @@ function ManageSumMatchList({ matchList, name, actions }) {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        // border: "solid",
+        // borderColor: "yellow",
+        flexGrow: "100",
+        justifyContent: "center",
+        alignItems: "center",
+        justifyItems: "center",
+        alignContent: "center",
+      }}
+    >
       {matchInfo.length > 0 ? (
         matchInfo.map((match) => (
           <SumMatchList

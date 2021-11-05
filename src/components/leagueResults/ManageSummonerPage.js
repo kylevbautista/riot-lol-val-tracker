@@ -12,6 +12,7 @@ import ManageSumMatchList from "./ManageSumMatchList";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Grid } from "@mui/material";
 
 function SummonerData(props) {
   const summonerId = props.match.params.sumName;
@@ -57,6 +58,7 @@ function SummonerData(props) {
        * If no erros. check if any api calls in progress. If in progress render LinearProgress.
        * If no content, errors, or api calls in progress, render No matches found.
        */}
+
       {props.summoner.matchIds.length > 0 ? (
         <ManageSumMatchList
           matchList={props.summoner.matchIds}
