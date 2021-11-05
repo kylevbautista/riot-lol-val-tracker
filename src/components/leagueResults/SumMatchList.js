@@ -41,7 +41,7 @@ function SumMatchList({ participants, match, name }) {
         unmountOnExit
         {...{ timeout: 1000 }}
       >
-        <Grid container spacing={0} direction="row">
+        <Grid container spacing={0} xs={6} md={12} direction="row">
           <Paper
             sx={{ p: 2, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
             style={{
@@ -52,13 +52,28 @@ function SumMatchList({ participants, match, name }) {
             {/* Main Grid inside Paper Component. Holds picture, info, and teams sub grids  */}
             <Grid item container spacing={0} direction="row">
               {/** Grid that contains picture */}
-              <Grid item container xs={3} color="white" direction="column">
+              <Grid
+                item
+                container
+                xs={12}
+                md={3}
+                color="white"
+                direction="column"
+                alignItems="center"
+              >
                 <ButtonBase sx={{ width: 128, height: 128 }}>
                   <Img alt="complex" src={shib_coin} />
                 </ButtonBase>
               </Grid>
               {/** Grid that contains match info */}
-              <Grid item container xs={3} color="white" direction="column">
+              <Grid
+                item
+                container
+                xs={12}
+                md={3}
+                color="white"
+                direction="column"
+              >
                 {player.win ? (
                   <Typography
                     variant="h6"
@@ -89,7 +104,7 @@ function SumMatchList({ participants, match, name }) {
                 </Typography>
               </Grid>
               {/** Grid that contains teams info */}
-              <Grid item container xs={6} color="white" direction="row">
+              <Grid item container xs={12} md={6} color="white" direction="row">
                 {/** Grid that contains team 1 */}
                 <Grid item container xs={6} direction="column">
                   <Typography variant="subtitle1" gutterBottom color="white">
