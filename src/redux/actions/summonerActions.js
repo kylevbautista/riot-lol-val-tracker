@@ -19,6 +19,13 @@ export function loadsummonerRankInfoSuccess(rankInfo) {
   return { type: types.LOAD_SUMMONER_RANK_SUCCESS, rankInfo: rankInfo };
 }
 
+export function userLogout() {
+  return { type: types.USER_LOGOUT_SUCCESS };
+}
+export function hmm() {
+  return { type: "" };
+}
+
 // thunks
 export function loadSummonerName(name) {
   return function (dispatch) {

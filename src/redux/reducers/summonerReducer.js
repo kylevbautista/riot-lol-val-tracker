@@ -11,6 +11,8 @@ export default function summonerReducer(state = initialState.summoner, action) {
       return { ...state, error: true };
     case types.LOAD_SUMMONER_RANK_SUCCESS:
       return { ...state, rankInfo: action.rankInfo };
+    case types.USER_LOGOUT_SUCCESS:
+      return initialState.summoner;
     default:
       return state;
   }

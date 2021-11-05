@@ -4,17 +4,25 @@
  * appropriate presentational component
  */
 import React from "react";
-import { useState } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { useState, useEffect } from "react";
+import * as userActions from "../../redux/actions/userActions";
 import { useHistory } from "react-router";
 import lol_homepage from "./lol-homepage.jpg";
 
 // Components
 import TextInput from "../TextInput";
-import HomePage from "../HomePage";
+import { FormControlUnstyledContext } from "@mui/core";
 
-function ManageResults() {
+function ManageResults({ actions }) {
   const [summonerName, setSummonerName] = useState("");
   const history = useHistory();
+
+  useEffect(() => {
+    actions.logout();
+    console.log("ok");
+  }, []);
 
   const handleText = (event) => {
     setSummonerName(event.target.value);
@@ -48,4 +56,17 @@ function ManageResults() {
   );
 }
 
-export default ManageResults;
+function mapStateToProps(state) {
+  return {
+    data: state,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      logout: bindActionCreators(userActions.logout, dispatch),
+    },
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ManageResults);

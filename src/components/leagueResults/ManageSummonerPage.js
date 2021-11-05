@@ -81,8 +81,7 @@ function SummonerData(props) {
         </Box>
       )}
       <br></br>
-      {props.summoner.matchIds.length > 0 &&
-      Object.keys(summonerMatchInfo).length > 0 ? (
+      {props.summoner.matchIds.length > 0 ? (
         <ManageSumMatchList
           matchList={props.summoner.matchIds}
           name={props.summoner.data.name}
