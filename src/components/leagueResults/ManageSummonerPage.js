@@ -17,11 +17,6 @@ function SummonerData(props) {
   const summonerId = props.match.params.sumName;
   const [summonerMatchInfo, setSummonerMatchInfo] = useState({});
 
-  // useEffect(() => {
-  //   if (Object.keys(props.summoner).length > 0)
-  //     console.log("REDUX sumData:", props.summoner);
-  // }, [props.summoner]);
-
   useEffect(() => {
     getSummonerbyName(summonerId);
   }, [summonerId]);
@@ -32,32 +27,8 @@ function SummonerData(props) {
     }
   }, [props.summoner.data]);
 
-  useEffect(() => {
-    if (props.summoner.matchIds.length > 0) {
-      getSummonerMatchInfo(props.summoner.matchIds[0]);
-    }
-  }, [props.summoner.matchIds]);
-
-  // useEffect(() => {
-  //   if (Object.keys(summonerMatchInfo).length > 0) {
-  //     console.log("summonerMatchInfo", summonerMatchInfo.info);
-  //     console.log("match participants", summonerMatchInfo.info.participants);
-  //   }
-  // }, [summonerMatchInfo]);
-
   const getSummonerbyName = (name) => {
     props.actions.getSumData(name);
-  };
-  // Gets all Match data pertaining to matching Match ID
-  const getSummonerMatchInfo = (matchId) => {
-    summonerApi
-      .getMatchData(matchId)
-      .then((data) => {
-        setSummonerMatchInfo(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   // grabs searched summoner's last 20 matches
@@ -68,6 +39,7 @@ function SummonerData(props) {
   return (
     <div>
       <br></br>
+
       {props.summoner.error && (
         <h1 style={{ color: "white" }}>OOPS.... SOMETHING WENT WRONG</h1>
       )}
@@ -102,6 +74,7 @@ function SummonerData(props) {
 function mapStateToProps(state) {
   return {
     summoner: state.summoner,
+    apiCallsInProgress: state.apiCallsInProgress,
   };
 }
 
