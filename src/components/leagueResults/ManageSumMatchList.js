@@ -10,7 +10,7 @@ import { bindActionCreators } from "redux";
 import * as summonerApi from "../../api/summonerApi";
 import SumMatchList from "./SumMatchList";
 
-function ManageSumMatchList({ matchList, name }) {
+function ManageSumMatchList({ matchList, name, actions }) {
   const [matchInfo, setMatchInfo] = useState([]);
 
   useEffect(() => {
@@ -32,6 +32,7 @@ function ManageSumMatchList({ matchList, name }) {
         setMatchInfo((matchInfo) => [...matchInfo, data]);
       })
       .catch((err) => {
+        actions.apiError();
         console.log(err);
       });
   };
@@ -56,17 +57,14 @@ function ManageSumMatchList({ matchList, name }) {
 
 function mapStateToProps(state) {
   return {
-    reduxsumdata: state.sumData,
+    summoner: state.summoner,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      getreduxsumdata: bindActionCreators(
-        summonerActions.loadSummonerName,
-        dispatch
-      ),
+      apiError: bindActionCreators(summonerActions.summonerApiError, dispatch),
     },
   };
 }
