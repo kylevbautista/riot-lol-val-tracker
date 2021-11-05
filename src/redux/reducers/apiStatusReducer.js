@@ -17,6 +17,8 @@ export default function apiStatusReducer(
     actionTypeEndsInSuccess(action.type)
   ) {
     return state - 1;
+  } else if (action.type === types.USER_LOGOUT) {
+    return 0;
   }
 
   return state;

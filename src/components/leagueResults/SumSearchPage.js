@@ -13,7 +13,6 @@ import lol_homepage from "./lol-homepage.jpg";
 
 // Components
 import TextInput from "../TextInput";
-import { FormControlUnstyledContext } from "@mui/core";
 
 function ManageResults({ actions }) {
   const [summonerName, setSummonerName] = useState("");

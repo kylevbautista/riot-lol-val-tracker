@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import * as apiStatusAction from "../../redux/actions/apiStatusAction";
 import { bindActionCreators } from "redux";
 import { styled } from "@mui/material/styles";
-import { Grid, Paper, ButtonBase } from "@mui/material";
+import { Grid, Paper, ButtonBase, Grow } from "@mui/material";
 import shib_coin from "./shib_coin.png";
 
 const Img = styled("img")({
@@ -35,35 +35,40 @@ function SumInfo({ info, rank, exists, ...props }) {
   };
   return (
     <div className="text-white">
-      <Grid container spacing={2} direction="row" color="white">
-        <Grid item container xs={6}>
-          <Paper
-            sx={{ p: 1, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
-            elevation={24}
-            style={{
-              backgroundColor: "#404040",
-            }}
-          >
-            <Grid item container xs={12}>
-              <Grid item container direction="column" xs={6} color="white">
-                <h1>{info.name}</h1>
-                <p>lvl:{info.summonerLevel}</p>
-              </Grid>
-              <Grid item container xs={6} color="white">
-                {summonerRank.length > 0 ? (
-                  <h4>
-                    {summonerRank[0].tier} {summonerRank[0].rank}
-                  </h4>
-                ) : (
-                  <h4 style={{ color: "#9A2A2A" }}>Rank Unknown</h4>
-                )}
-                {summonerRank.length > 0 ? (
-                  <p>{summonerRank[0].queueType}</p>
-                ) : (
-                  <p style={{ color: "#9A2A2A" }}>Rank Type Unknown</p>
-                )}
-              </Grid>
-              {/* <Grid item container xs={3}>
+      <Grow
+        in={true}
+        style={{ transformOrigin: "0 0 0" }}
+        {...{ timeout: 1000 }}
+      >
+        <Grid container spacing={2} direction="row" color="white">
+          <Grid item container xs={6}>
+            <Paper
+              sx={{ p: 1, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
+              elevation={24}
+              style={{
+                backgroundColor: "#404040",
+              }}
+            >
+              <Grid item container xs={12}>
+                <Grid item container direction="column" xs={6} color="white">
+                  <h1>{info.name}</h1>
+                  <p>lvl:{info.summonerLevel}</p>
+                </Grid>
+                <Grid item container xs={6} color="white">
+                  {summonerRank.length > 0 ? (
+                    <h4>
+                      {summonerRank[0].tier} {summonerRank[0].rank}
+                    </h4>
+                  ) : (
+                    <h4 style={{ color: "#9A2A2A" }}>Rank Unknown</h4>
+                  )}
+                  {summonerRank.length > 0 ? (
+                    <p>{summonerRank[0].queueType}</p>
+                  ) : (
+                    <p style={{ color: "#9A2A2A" }}>Rank Type Unknown</p>
+                  )}
+                </Grid>
+                {/* <Grid item container xs={3}>
                 <ButtonBase sx={{ width: 128, height: 128 }}>
                   <Img alt="complex" src={shib_coin} />
                 </ButtonBase>
@@ -73,32 +78,33 @@ function SumInfo({ info, rank, exists, ...props }) {
                   <Img alt="complex" src={shib_coin} />
                 </ButtonBase>
               </Grid> */}
-            </Grid>
-          </Paper>
-        </Grid>
-        <Grid item container xs={6}>
-          <Paper
-            sx={{ p: 1, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
-            elevation={24}
-            style={{
-              backgroundColor: "#404040",
-            }}
-          >
-            <Grid item container xs={12}>
-              <Grid item container xs={6}>
-                <ButtonBase sx={{ width: 95, height: 95 }}>
-                  <Img alt="complex" src={shib_coin} />
-                </ButtonBase>
               </Grid>
-              <Grid item container xs={6}>
-                <ButtonBase sx={{ width: 95, height: 95 }}>
-                  <Img alt="complex" src={shib_coin} />
-                </ButtonBase>
+            </Paper>
+          </Grid>
+          <Grid item container xs={6}>
+            <Paper
+              sx={{ p: 1, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
+              elevation={24}
+              style={{
+                backgroundColor: "#404040",
+              }}
+            >
+              <Grid item container xs={12}>
+                <Grid item container xs={6}>
+                  <ButtonBase sx={{ width: 95, height: 95 }}>
+                    <Img alt="complex" src={shib_coin} />
+                  </ButtonBase>
+                </Grid>
+                <Grid item container xs={6}>
+                  <ButtonBase sx={{ width: 95, height: 95 }}>
+                    <Img alt="complex" src={shib_coin} />
+                  </ButtonBase>
+                </Grid>
               </Grid>
-            </Grid>
-          </Paper>
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
+      </Grow>
     </div>
   );
 }

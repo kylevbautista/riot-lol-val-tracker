@@ -11,6 +11,7 @@ import SumInfo from "./SumInfo";
 import ManageSumMatchList from "./ManageSumMatchList";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function SummonerData(props) {
   const summonerId = props.match.params.sumName;
@@ -34,16 +35,6 @@ function SummonerData(props) {
     props.actions.getMatchList(puuid);
   };
 
-  const apiInProgress = () => {
-    return (
-      props.actions.apiCallsInProgress && (
-        <Box sx={{ width: "100%" }}>
-          <LinearProgress />
-        </Box>
-      )
-    );
-  };
-  const noMatchFound = () => {};
   return (
     <div>
       <br></br>
@@ -56,7 +47,7 @@ function SummonerData(props) {
         <></>
       ) : (
         <Box sx={{ width: "100%" }}>
-          <LinearProgress />
+          <CircularProgress />
         </Box>
       )}
       <br></br>
