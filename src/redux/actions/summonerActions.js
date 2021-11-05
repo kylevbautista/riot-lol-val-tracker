@@ -19,13 +19,18 @@ export function loadsummonerRankInfoSuccess(rankInfo) {
   return { type: types.LOAD_SUMMONER_RANK_SUCCESS, rankInfo: rankInfo };
 }
 
+export function loadSummonerMatchInfoSuccess() {
+  return { type: types.LOAD_SUMMONER_MATCH_INFO_SUCCESS };
+}
+
 export function userLogout() {
-  return { type: types.USER_LOGOUT_SUCCESS };
+  return { type: types.USER_LOGOUT };
 }
 
 // thunks
 export function loadSummonerName(name) {
   return function (dispatch) {
+    dispatch(beginApiCall());
     summonerApi
       .byName(name)
       .then((data) => {
@@ -42,6 +47,7 @@ export function loadSummonerName(name) {
 
 export function loadSummonerMatchIds(puuid) {
   return function (dispatch) {
+    dispatch(beginApiCall());
     summonerApi
       .getMatchIds(puuid)
       .then((data) => {

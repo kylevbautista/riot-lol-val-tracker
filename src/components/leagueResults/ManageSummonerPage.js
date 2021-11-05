@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as summonerActions from "../../redux/actions/summonerActions";
 import { bindActionCreators } from "redux";
-import * as summonerApi from "../../api/summonerApi";
 import SumInfo from "./SumInfo";
 import ManageSumMatchList from "./ManageSumMatchList";
 import Box from "@mui/material/Box";
@@ -35,10 +34,19 @@ function SummonerData(props) {
     props.actions.getMatchList(puuid);
   };
 
+  const apiInProgress = () => {
+    return (
+      props.actions.apiCallsInProgress && (
+        <Box sx={{ width: "100%" }}>
+          <LinearProgress />
+        </Box>
+      )
+    );
+  };
+  const noMatchFound = () => {};
   return (
     <div>
       <br></br>
-
       {props.summoner.error && (
         <h1 style={{ color: "white" }}>OOPS.... SOMETHING WENT WRONG</h1>
       )}
@@ -52,6 +60,12 @@ function SummonerData(props) {
         </Box>
       )}
       <br></br>
+      {/**
+       * Checks if matchIds array have any content. If content, render ManageSumList component.
+       * If no content check for errors gnerated by api call. If errors, render nothing.
+       * If no erros. check if any api calls in progress. If in progress render LinearProgress.
+       * If no content, errors, or api calls in progress, render No matches found.
+       */}
       {props.summoner.matchIds.length > 0 ? (
         <ManageSumMatchList
           matchList={props.summoner.matchIds}
@@ -59,12 +73,12 @@ function SummonerData(props) {
         />
       ) : props.summoner.error ? (
         <></>
-      ) : props.summoner.matchIds.length === 0 ? (
-        <h1 style={{ color: "white" }}>No Matches Found</h1>
-      ) : (
+      ) : props.apiCallsInProgress ? (
         <Box sx={{ width: "100%" }}>
           <LinearProgress />
         </Box>
+      ) : (
+        <h1 style={{ color: "white" }}>No Matches Found</h1>
       )}
     </div>
   );
