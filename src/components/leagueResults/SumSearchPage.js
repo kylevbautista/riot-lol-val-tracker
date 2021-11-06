@@ -15,7 +15,7 @@ import lol_homepage from "./lol-homepage.jpg";
 // Components
 import TextInput from "../TextInput";
 import WaitLeaderBoard from "./WaitLeaderBoard";
-import { Zoom } from "@mui/material";
+import { Zoom, ButtonBase } from "@mui/material";
 
 function ManageResults({ actions, lolBoards }) {
   const [summonerName, setSummonerName] = useState("");
@@ -38,7 +38,9 @@ function ManageResults({ actions, lolBoards }) {
     }
     setSummonerName("");
   };
-
+  const handleClick = (event) => {
+    history.push("summoner/" + event.target.value);
+  };
   return (
     <div className="text-white">
       <div className="container">
@@ -59,7 +61,11 @@ function ManageResults({ actions, lolBoards }) {
             >
               {Object.keys(lolBoards).length > 0 ? (
                 lolBoards.entries.map((summoner, index) => (
-                  <Zoom in={true} style={{ transitionDelay: "250ms" }}>
+                  <Zoom
+                    key={summoner.summonerName}
+                    in={true}
+                    style={{ transitionDelay: "250ms" }}
+                  >
                     <div
                       className="row p-2 mb-1 bg-dark rounded"
                       style={{
@@ -68,7 +74,14 @@ function ManageResults({ actions, lolBoards }) {
                       }}
                     >
                       <div className="col-3">Rank: {index + 1}</div>
-                      <div className="col-9">{summoner.summonerName}</div>
+                      <div className="col-9">
+                        <ButtonBase
+                          onClick={handleClick}
+                          value={summoner.summonerName}
+                        >
+                          {summoner.summonerName}
+                        </ButtonBase>
+                      </div>
                     </div>
                   </Zoom>
                 ))

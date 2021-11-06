@@ -41,7 +41,7 @@ function SumMatchList({ participants, match, name }) {
         unmountOnExit
         {...{ timeout: 1000 }}
       >
-        <Grid container spacing={0} xs={6} md={12} direction="row">
+        <Grid container spacing={0} direction="row">
           <Paper
             sx={{ p: 2, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
             style={{
