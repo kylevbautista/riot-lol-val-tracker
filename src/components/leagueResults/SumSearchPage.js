@@ -14,7 +14,8 @@ import lol_homepage from "./lol-homepage.jpg";
 
 // Components
 import TextInput from "../TextInput";
-import { Slide, Grow } from "@mui/material";
+import WaitLeaderBoard from "./WaitLeaderBoard";
+import { Zoom } from "@mui/material";
 
 function ManageResults({ actions, lolBoards }) {
   const [summonerName, setSummonerName] = useState("");
@@ -58,14 +59,7 @@ function ManageResults({ actions, lolBoards }) {
             >
               {Object.keys(lolBoards).length > 0 ? (
                 lolBoards.entries.map((summoner, index) => (
-                  <Slide
-                    direction="up"
-                    in={true}
-                    mountOnEnter
-                    unmountOnExit
-                    {...{ timeout: 1000 }}
-                    key={summoner.summonerId}
-                  >
+                  <Zoom in={true} style={{ transitionDelay: "250ms" }}>
                     <div
                       className="row p-2 mb-1 bg-dark rounded"
                       style={{
@@ -76,28 +70,27 @@ function ManageResults({ actions, lolBoards }) {
                       <div className="col-3">Rank: {index + 1}</div>
                       <div className="col-9">{summoner.summonerName}</div>
                     </div>
-                  </Slide>
+                  </Zoom>
                 ))
               ) : (
-                <div className="spinner-border text-primary" role="status">
-                  <span className="sr-only"></span>
-                </div>
+                <>
+                  <WaitLeaderBoard />
+                  <WaitLeaderBoard />
+                  <WaitLeaderBoard />
+                  <WaitLeaderBoard />
+                </>
               )}
             </div>
           </div>
           {/* || */}
           <div className="col-12 col-md-6">
-            <Grow
-              in={true}
-              style={{ transformOrigin: "0 0 0" }}
-              {...{ timeout: 1000 }}
-            >
+            <Zoom in={true} style={{ transitionDelay: "500ms" }}>
               <img
                 src={lol_homepage}
                 alt="lol-homepage.jpg"
                 style={{ width: "100%", padding: "5px", marginTop: "35px" }}
               ></img>
-            </Grow>
+            </Zoom>
           </div>
           {/* || */}
         </div>
