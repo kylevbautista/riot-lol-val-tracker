@@ -64,10 +64,10 @@ function ManageResults({ actions, lolBoards }) {
                     mountOnEnter
                     unmountOnExit
                     {...{ timeout: 1000 }}
+                    key={summoner.summonerId}
                   >
                     <div
                       className="row p-2 mb-1 bg-dark rounded"
-                      key={summoner.summonerId}
                       style={{
                         backgroundColor: "#222222",
                         boxShadow: "0 1px 6px 1px black",
@@ -79,8 +79,8 @@ function ManageResults({ actions, lolBoards }) {
                   </Slide>
                 ))
               ) : (
-                <div class="spinner-border text-primary" role="status">
-                  <span class="sr-only"></span>
+                <div className="spinner-border text-primary" role="status">
+                  <span className="sr-only"></span>
                 </div>
               )}
             </div>
@@ -96,7 +96,6 @@ function ManageResults({ actions, lolBoards }) {
                 src={lol_homepage}
                 alt="lol-homepage.jpg"
                 style={{ width: "100%", padding: "5px", marginTop: "35px" }}
-                class="animated bounce infinite"
               ></img>
             </Grow>
           </div>
