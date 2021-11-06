@@ -45,11 +45,11 @@ function ManageResults({ actions, lolBoards, data }) {
     <div className="text-white">
       <div className="container">
         <div
-          className="row"
+          className="row justify-content-center"
           style={{ marginTop: "20px", marginBottom: "20px" }}
         >
           {/* || */}
-          <div className="col-12 col-md-6">
+          <div className="col-10 col-md-6">
             {data.error ? (
               <p>Error Loading LeaderBoard</p>
             ) : (
@@ -101,7 +101,7 @@ function ManageResults({ actions, lolBoards, data }) {
             </div>
           </div>
           {/* || */}
-          <div className="col-12 col-md-6">
+          <div className="col-10 col-md-6">
             <Zoom in={true} style={{ transitionDelay: "500ms" }}>
               <img
                 src={lol_homepage}
@@ -117,7 +117,7 @@ function ManageResults({ actions, lolBoards, data }) {
             className="row justify-content-center"
             style={{ marginTop: "20px", marginBottom: "20px" }}
           >
-            <div className="col-11 col-md-6">
+            <div className="col-10 col-md-6">
               <TextInput onChange={handleText} value={summonerName} />
             </div>
             <div className="col-auto col-md-2">
