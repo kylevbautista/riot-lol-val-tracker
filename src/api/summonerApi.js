@@ -31,3 +31,10 @@ export function getRank(encryptedId) {
   let url = `${baseUrl}${encryptedId}?api_key=${apiKey}`;
   return fetch(url).then(handleResponse).catch(handleError);
 }
+
+export function getLeaderBoards() {
+  let baseUrl =
+    "https://na1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5";
+  let url = `${baseUrl}?api_key=${apiKey}`;
+  return fetch(url).then(handleResponse).catch(handleError);
+}

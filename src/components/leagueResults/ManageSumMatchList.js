@@ -10,7 +10,6 @@ import { bindActionCreators } from "redux";
 import * as summonerApi from "../../api/summonerApi";
 import { beginApiCall } from "../../redux/actions/apiStatusAction";
 import SumMatchList from "./SumMatchList";
-import { Grid } from "@mui/material";
 
 function ManageSumMatchList({ matchList, name, actions }) {
   const [matchInfo, setMatchInfo] = useState([]);

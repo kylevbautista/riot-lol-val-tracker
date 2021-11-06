@@ -23,6 +23,11 @@ export function loadSummonerMatchInfoSuccess() {
   return { type: types.LOAD_SUMMONER_MATCH_INFO_SUCCESS };
 }
 
+export function loadLeaderBoardsSuccess(lolBoard) {
+  lolBoard.entries.sort((a, b) => (a.leaguePoints > b.leaguePoints ? -1 : 1));
+  return { type: types.LOAD_LOL_LEADERBOARDS_SUCCESS, lolBoard: lolBoard };
+}
+
 export function userLogout() {
   return { type: types.USER_LOGOUT };
 }
@@ -72,6 +77,21 @@ export function loadsummonerRankInfo(encryptedId) {
       .catch((err) => {
         console.log("loadsummonerRankInfo Fail");
         dispatch(summonerApiError());
+      });
+  };
+}
+
+export function loadLeaderBoards() {
+  return function (dispatch) {
+    dispatch(beginApiCall());
+    summonerApi
+      .getLeaderBoards()
+      .then((data) => {
+        dispatch(loadLeaderBoardsSuccess(data));
+      })
+      .catch((err) => {
+        console.log("loadLeaderBoards Fail");
+        dispatch(summonerApiError);
       });
   };
 }

@@ -11,6 +11,8 @@ export default function summonerReducer(state = initialState.summoner, action) {
       return { ...state, error: true };
     case types.LOAD_SUMMONER_RANK_SUCCESS:
       return { ...state, rankInfo: action.rankInfo };
+    case types.LOAD_LOL_LEADERBOARDS_SUCCESS:
+      return { ...state, leaderBoards: action.lolBoard };
     case types.USER_LOGOUT:
       return initialState.summoner;
     default:

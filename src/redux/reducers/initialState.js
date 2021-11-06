@@ -4,6 +4,7 @@ export default {
     rankInfo: [],
     test: {},
     matchIds: [],
+    leaderBoards: {},
     error: false,
   },
   apiCallsInProgress: 0,
