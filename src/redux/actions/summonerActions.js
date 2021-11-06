@@ -91,7 +91,7 @@ export function loadLeaderBoards() {
       })
       .catch((err) => {
         console.log("loadLeaderBoards Fail");
-        dispatch(summonerApiError);
+        dispatch(summonerApiError());
       });
   };
 }

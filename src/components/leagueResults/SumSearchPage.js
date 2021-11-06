@@ -17,7 +17,7 @@ import TextInput from "../TextInput";
 import WaitLeaderBoard from "./WaitLeaderBoard";
 import { Zoom, ButtonBase } from "@mui/material";
 
-function ManageResults({ actions, lolBoards }) {
+function ManageResults({ actions, lolBoards, data }) {
   const [summonerName, setSummonerName] = useState("");
   const history = useHistory();
 
@@ -50,7 +50,11 @@ function ManageResults({ actions, lolBoards }) {
         >
           {/* || */}
           <div className="col-12 col-md-6">
-            <p>League of Legends LeaderBoard</p>
+            {data.error ? (
+              <p>Error Loading LeaderBoard</p>
+            ) : (
+              <p>League of Legends LeaderBoard</p>
+            )}
             <div
               className="container"
               style={{
@@ -67,13 +71,13 @@ function ManageResults({ actions, lolBoards }) {
                     style={{ transitionDelay: "250ms" }}
                   >
                     <div
-                      className="row p-2 mb-1 bg-dark rounded"
+                      className="row p-2 mb-1 rounded"
                       style={{
                         backgroundColor: "#222222",
                         boxShadow: "0 1px 6px 1px black",
                       }}
                     >
-                      <div className="col-3">Rank: {index + 1}</div>
+                      <div className="col-3">{index + 1}</div>
                       <div className="col-9">
                         <ButtonBase
                           onClick={handleClick}
@@ -87,6 +91,7 @@ function ManageResults({ actions, lolBoards }) {
                 ))
               ) : (
                 <>
+                  <WaitLeaderBoard />
                   <WaitLeaderBoard />
                   <WaitLeaderBoard />
                   <WaitLeaderBoard />
@@ -167,7 +172,7 @@ function ManageResults({ actions, lolBoards }) {
 
 function mapStateToProps(state) {
   return {
-    data: state,
+    data: state.summoner,
     lolBoards: state.summoner.leaderBoards,
   };
 }

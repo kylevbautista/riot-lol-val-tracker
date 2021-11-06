@@ -43,8 +43,6 @@ function ManageSumMatchList({ matchList, name, actions }) {
   return (
     <div
       style={{
-        // border: "solid",
-        // borderColor: "yellow",
         flexGrow: "100",
         justifyContent: "center",
         alignItems: "center",

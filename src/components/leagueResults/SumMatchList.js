@@ -47,6 +47,10 @@ function SumMatchList({ participants, match, name }) {
             style={{
               backgroundColor: "#222222",
               boxShadow: "0 1px 6px 1px black",
+              // justifyContent: "center",
+              // alignItems: "center",
+              // justifyItems: "center",
+              // alignContent: "center",
             }}
           >
             {/* Main Grid inside Paper Component. Holds picture, info, and teams sub grids  */}

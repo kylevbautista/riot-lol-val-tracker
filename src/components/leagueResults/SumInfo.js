@@ -40,8 +40,19 @@ function SumInfo({ info, rank, exists, ...props }) {
         style={{ transformOrigin: "0 0 0" }}
         {...{ timeout: 1000 }}
       >
-        <Grid container spacing={2} direction="row" color="white">
-          <Grid item container xs={6}>
+        <Grid
+          container
+          spacing={2}
+          direction="row"
+          color="white"
+          style={{
+            justifyContent: "center",
+            // alignItems: "center",
+            // justifyItems: "center",
+            // alignContent: "center",
+          }}
+        >
+          <Grid item container xs={6} md={6}>
             <Paper
               sx={{ p: 1, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
               elevation={24}
@@ -50,38 +61,55 @@ function SumInfo({ info, rank, exists, ...props }) {
               }}
             >
               <Grid item container xs={12}>
-                <Grid item container direction="column" xs={6} color="white">
-                  <h1>{info.name}</h1>
-                  <p>lvl:{info.summonerLevel}</p>
+                <Grid
+                  item
+                  container
+                  direction="column"
+                  xs={12}
+                  md={6}
+                  color="white"
+                  style={{
+                    justifyContent: "center",
+                  }}
+                >
+                  <p className="h6">
+                    <strong>{info.name}</strong>
+                  </p>
+                  <p>
+                    <small>lvl:{info.summonerLevel}</small>
+                  </p>
                 </Grid>
-                <Grid item container xs={6} color="white">
+                <Grid
+                  item
+                  container
+                  xs={12}
+                  md={6}
+                  color="white"
+                  style={{
+                    justifyContent: "center",
+                  }}
+                >
                   {summonerRank.length > 0 ? (
-                    <h4>
-                      {summonerRank[0].tier} {summonerRank[0].rank}
-                    </h4>
+                    <p className="h6">
+                      <small>
+                        {summonerRank[0].tier} {summonerRank[0].rank}
+                      </small>
+                    </p>
                   ) : (
                     <h4 style={{ color: "#9A2A2A" }}>Rank Unknown</h4>
                   )}
                   {summonerRank.length > 0 ? (
-                    <p>{summonerRank[0].queueType}</p>
+                    <p className="h6">
+                      <small>{summonerRank[0].queueType}</small>
+                    </p>
                   ) : (
                     <p style={{ color: "#9A2A2A" }}>Rank Type Unknown</p>
                   )}
                 </Grid>
-                {/* <Grid item container xs={3}>
-                <ButtonBase sx={{ width: 128, height: 128 }}>
-                  <Img alt="complex" src={shib_coin} />
-                </ButtonBase>
-              </Grid>
-              <Grid item container xs={3}>
-                <ButtonBase sx={{ width: 128, height: 128 }}>
-                  <Img alt="complex" src={shib_coin} />
-                </ButtonBase>
-              </Grid> */}
               </Grid>
             </Paper>
           </Grid>
-          <Grid item container xs={6}>
+          <Grid item container xs={7} md={2}>
             <Paper
               sx={{ p: 1, margin: "auto", maxWidth: "100%", flexGrow: 1 }}
               elevation={24}
@@ -90,16 +118,23 @@ function SumInfo({ info, rank, exists, ...props }) {
               }}
             >
               <Grid item container xs={12}>
-                <Grid item container xs={6}>
-                  <ButtonBase sx={{ width: 95, height: 95 }}>
+                <Grid
+                  item
+                  container
+                  xs={12}
+                  style={{
+                    justifyContent: "center",
+                  }}
+                >
+                  <ButtonBase sx={{ width: 65, height: 65 }}>
                     <Img alt="complex" src={shib_coin} />
                   </ButtonBase>
                 </Grid>
-                <Grid item container xs={6}>
+                {/* <Grid item container xs={6}>
                   <ButtonBase sx={{ width: 95, height: 95 }}>
                     <Img alt="complex" src={shib_coin} />
                   </ButtonBase>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Paper>
           </Grid>
