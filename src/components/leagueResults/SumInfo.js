@@ -26,6 +26,12 @@ function SumInfo({ info, rank, exists, ...props }) {
     summonerApi
       .getRank(encryptedId)
       .then((data) => {
+        data.sort((a, b) => (a.leaguePoints > b.leaguePoints ? -1 : 1));
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].queueType === "RANKED_SOLO_5x5") {
+            data[i].queueType = "Ranked Solo";
+          }
+        }
         setSummonerRank(data);
         // console.log("DATA", data);
       })
@@ -33,6 +39,7 @@ function SumInfo({ info, rank, exists, ...props }) {
         console.log(err);
       });
   };
+
   return (
     <div className="text-white">
       <Grow
@@ -70,14 +77,26 @@ function SumInfo({ info, rank, exists, ...props }) {
                   color="white"
                   style={{
                     justifyContent: "center",
+                    borderEnd: "1px solid",
                   }}
                 >
                   <p className="h6">
                     <strong>{info.name}</strong>
                   </p>
-                  <p>
-                    <small>lvl:{info.summonerLevel}</small>
-                  </p>
+                  <small>lvl:{info.summonerLevel}</small>
+                  {summonerRank.length > 0 ? (
+                    <small>
+                      Win Ratio&nbsp;
+                      {(
+                        (summonerRank[0].wins /
+                          (summonerRank[0].wins + summonerRank[0].losses)) *
+                        100
+                      ).toFixed()}
+                      %
+                    </small>
+                  ) : (
+                    <>LP Unknown</>
+                  )}
                 </Grid>
                 <Grid
                   item
@@ -90,21 +109,79 @@ function SumInfo({ info, rank, exists, ...props }) {
                   }}
                 >
                   {summonerRank.length > 0 ? (
-                    <p className="h6">
-                      <small>
-                        {summonerRank[0].tier} {summonerRank[0].rank}
-                      </small>
-                    </p>
+                    <Grid
+                      item
+                      container
+                      xs={12}
+                      color="white"
+                      style={{
+                        justifyContent: "center",
+                      }}
+                    >
+                      <p className="h6">
+                        <small>
+                          {summonerRank[0].tier} {summonerRank[0].rank}
+                        </small>
+                      </p>
+                    </Grid>
                   ) : (
-                    <h4 style={{ color: "#9A2A2A" }}>Rank Unknown</h4>
+                    <Grid
+                      item
+                      container
+                      xs={12}
+                      color="white"
+                      style={{
+                        justifyContent: "center",
+                      }}
+                    >
+                      <h4 style={{ color: "#9A2A2A" }}>Rank Unknown</h4>
+                    </Grid>
                   )}
                   {summonerRank.length > 0 ? (
-                    <p className="h6">
-                      <small>{summonerRank[0].queueType}</small>
-                    </p>
+                    <Grid
+                      item
+                      container
+                      xs={12}
+                      color="white"
+                      style={{
+                        justifyContent: "center",
+                      }}
+                    >
+                      <p className="h6">
+                        <small>{summonerRank[0].queueType}</small>
+                      </p>
+                    </Grid>
                   ) : (
-                    <p style={{ color: "#9A2A2A" }}>Rank Type Unknown</p>
+                    <Grid
+                      item
+                      container
+                      xs={12}
+                      color="white"
+                      style={{
+                        justifyContent: "center",
+                      }}
+                    >
+                      <p style={{ color: "#9A2A2A" }}>Rank Type Unknown</p>
+                    </Grid>
                   )}
+                  <Grid
+                    item
+                    container
+                    xs={12}
+                    color="white"
+                    style={{
+                      justifyContent: "center",
+                    }}
+                  >
+                    {summonerRank.length > 0 ? (
+                      <small>
+                        {summonerRank[0].leaguePoints} LP /{" "}
+                        {summonerRank[0].wins}W {summonerRank[0].losses}L
+                      </small>
+                    ) : (
+                      <>LP Unknown</>
+                    )}
+                  </Grid>
                 </Grid>
               </Grid>
             </Paper>

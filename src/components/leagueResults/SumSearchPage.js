@@ -24,7 +24,6 @@ function ManageResults({ actions, lolBoards, data }) {
   useEffect(() => {
     actions.logout();
     actions.loadLolLeaderBoard();
-    console.log("ok");
   }, []);
 
   const handleText = (event) => {
@@ -77,7 +76,7 @@ function ManageResults({ actions, lolBoards, data }) {
                         boxShadow: "0 1px 6px 1px black",
                       }}
                     >
-                      <div className="col-3">{index + 1}</div>
+                      <div className="col-3 border-end">{index + 1}</div>
                       <div className="col-9">
                         <ButtonBase
                           onClick={handleClick}

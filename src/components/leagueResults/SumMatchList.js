@@ -15,6 +15,15 @@ function SumMatchList({ participants, match, name }) {
   const [team1, setTeam1] = useState([]);
   const [team2, setTeam2] = useState([]);
   const [player, setPlayer] = useState({});
+  const [gameTime, setGameTime] = useState({});
+
+  const getTime = (duration) => {
+    let minutes = Math.floor(duration / 60);
+    let seconds = duration - minutes * 60;
+    let mins = ~~((duration % 3600) / 60);
+    let secs = ~~duration % 60;
+    setGameTime({ minutes: mins, seconds: secs });
+  };
 
   useEffect(() => {
     if (participants.length > 0) {
@@ -29,6 +38,7 @@ function SumMatchList({ participants, match, name }) {
           setPlayer(sum);
         }
       }
+      getTime(match.info.gameDuration);
     }
   }, [participants]);
 
@@ -65,9 +75,10 @@ function SumMatchList({ participants, match, name }) {
                 direction="column"
                 alignItems="center"
               >
-                <ButtonBase sx={{ width: 128, height: 128 }}>
+                <ButtonBase sx={{ width: 115, height: 115 }}>
                   <Img alt="complex" src={shib_coin} />
                 </ButtonBase>
+                {player.championName}
               </Grid>
               {/** Grid that contains match info */}
               <Grid
@@ -96,6 +107,13 @@ function SumMatchList({ participants, match, name }) {
                   >
                     Defeat
                   </Typography>
+                )}
+                {Object.keys(gameTime).length > 0 ? (
+                  <>
+                    Duration: {gameTime.minutes}m {gameTime.seconds}s
+                  </>
+                ) : (
+                  <></>
                 )}
                 <Typography variant="body2" gutterBottom>
                   GameMode: {match.info.gameMode}
