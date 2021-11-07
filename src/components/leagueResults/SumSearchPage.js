@@ -16,14 +16,14 @@ import { useHistory } from "react-router";
 
 // Components
 import TextInput from "../TextInput";
-import { Zoom, ButtonBase } from "@mui/material";
+import { Zoom } from "@mui/material";
 import SumLeaderBoard from "./SumLeaderBoard";
 import ValLeaderBoard from "./ValLeaderBoard";
 import lol_homepage from "./lol-homepage.jpg";
 
 function ManageResults({ actions, lolBoards, data, valContent, valBoards }) {
   const [summonerName, setSummonerName] = useState("");
-  const [actid, setActid] = useState("");
+  // const [actid, setActid] = useState("");
   const [valInfo, setValInfo] = useState({});
   const [valLeaderBoards, setValLeaderBoards] = useState({});
   const history = useHistory();
@@ -40,20 +40,14 @@ function ManageResults({ actions, lolBoards, data, valContent, valBoards }) {
       let acts = valInfo.acts;
       for (let i = acts.length - 1; i >= 0; i--) {
         if (acts[i].isActive && acts[i].type === "act") {
-          setActid(acts[i].id);
+          // setActid(acts[i].id);
+          getValLeaderBoard(acts[i].id);
           break;
         }
       }
       console.log(valInfo);
     }
   }, [valInfo]);
-
-  useEffect(() => {
-    if (actid.length > 0) {
-      // actions.loadValLeaderBoard(actid);
-      getValLeaderBoard(actid);
-    }
-  }, [actid]);
 
   useEffect(() => {
     if (Object.keys(valLeaderBoards).length > 0) {
