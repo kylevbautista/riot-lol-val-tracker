@@ -119,6 +119,33 @@ function SumInfo({ info, rank, exists, ...props }) {
                       }}
                     >
                       <p className="h6">
+                        <small>{summonerRank[0].queueType}</small>
+                      </p>
+                    </Grid>
+                  ) : (
+                    <Grid
+                      item
+                      container
+                      xs={12}
+                      color="white"
+                      style={{
+                        justifyContent: "center",
+                      }}
+                    >
+                      <p style={{ color: "#9A2A2A" }}>Rank Type Unknown</p>
+                    </Grid>
+                  )}
+                  {summonerRank.length > 0 ? (
+                    <Grid
+                      item
+                      container
+                      xs={12}
+                      color="white"
+                      style={{
+                        justifyContent: "center",
+                      }}
+                    >
+                      <p className="h6">
                         <small>
                           {summonerRank[0].tier} {summonerRank[0].rank}
                         </small>
@@ -137,33 +164,7 @@ function SumInfo({ info, rank, exists, ...props }) {
                       <h4 style={{ color: "#9A2A2A" }}>Rank Unknown</h4>
                     </Grid>
                   )}
-                  {summonerRank.length > 0 ? (
-                    <Grid
-                      item
-                      container
-                      xs={12}
-                      color="white"
-                      style={{
-                        justifyContent: "center",
-                      }}
-                    >
-                      <p className="h6">
-                        <small>{summonerRank[0].queueType}</small>
-                      </p>
-                    </Grid>
-                  ) : (
-                    <Grid
-                      item
-                      container
-                      xs={12}
-                      color="white"
-                      style={{
-                        justifyContent: "center",
-                      }}
-                    >
-                      <p style={{ color: "#9A2A2A" }}>Rank Type Unknown</p>
-                    </Grid>
-                  )}
+                  {/** */}
                   <Grid
                     item
                     container
