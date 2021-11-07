@@ -1,7 +1,7 @@
 import React from "react";
 
 // components
-import { Zoom, ButtonBase } from "@mui/material";
+import { Zoom, ButtonBase, Button } from "@mui/material";
 import WaitLeaderBoard from "../common/WaitLeaderBoard";
 
 function ValLeaderBoard({ data, valLeaderBoards, handleClick }) {
@@ -32,9 +32,13 @@ function ValLeaderBoard({ data, valLeaderBoards, handleClick }) {
               >
                 <div className="col-2 border-end">{index + 1}</div>
                 <div className="col-7">
-                  <ButtonBase value={agent.gameName}>
+                  <Button
+                    size="small"
+                    value={agent.gameName}
+                    style={{ color: "white" }}
+                  >
                     {agent.gameName}
-                  </ButtonBase>
+                  </Button>
                 </div>
                 <div className="col-3 border-start">
                   {agent.rankedRating} rr

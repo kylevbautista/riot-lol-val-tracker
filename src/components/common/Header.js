@@ -28,6 +28,11 @@ function Header() {
               aria-label="Nav-Bar homepage"
               color="inherit"
               onClick={handleClick}
+              sx={{
+                ":hover": {
+                  bgcolor: "#404040",
+                },
+              }}
             >
               <Badge badgeContent={0} color="error">
                 <HomeIcon />
