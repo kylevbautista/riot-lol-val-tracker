@@ -4,6 +4,8 @@
  * appropriate presentational component
  */
 import React from "react";
+
+// redux actions creators
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { useState, useEffect } from "react";
@@ -21,7 +23,7 @@ import SumLeaderBoard from "./SumLeaderBoard";
 import ValLeaderBoard from "./ValLeaderBoard";
 import lol_homepage from "./lol-homepage.jpg";
 
-function ManageResults({ actions, lolBoards, data, valContent, valBoards }) {
+function ManageResults({ actions, lolBoards, data, valData }) {
   const [summonerName, setSummonerName] = useState("");
   // const [actid, setActid] = useState("");
   const [valInfo, setValInfo] = useState({});
@@ -48,12 +50,6 @@ function ManageResults({ actions, lolBoards, data, valContent, valBoards }) {
       console.log(valInfo);
     }
   }, [valInfo]);
-
-  useEffect(() => {
-    if (Object.keys(valLeaderBoards).length > 0) {
-      console.log("leader", valLeaderBoards);
-    }
-  }, [valLeaderBoards]);
 
   const getValInfo = () => {
     //actions.startApiCall();
@@ -103,19 +99,16 @@ function ManageResults({ actions, lolBoards, data, valContent, valBoards }) {
           className="row justify-content-center"
           style={{ marginTop: "20px", marginBottom: "20px" }}
         >
-          {/* || */}
           <SumLeaderBoard
             data={data}
             lolBoards={lolBoards}
             handleClick={handleClick}
           />
-          {/* || */}
           <ValLeaderBoard
-            data={data}
+            data={valData}
             valLeaderBoards={valLeaderBoards}
             handleClick={handleClick}
           />
-          {/* || */}
         </div>
         <form onSubmit={handleSearch}>
           <div
@@ -133,50 +126,11 @@ function ManageResults({ actions, lolBoards, data, valContent, valBoards }) {
           </div>
         </form>
       </div>
-      {/* || */}
-      {/* <div className="container">
-        <div className="row">
-          <div
-            className="col"
-            style={{ border: "solid 1px", borderColor: "white" }}
-          >
-            col1
-          </div>
-          <div
-            className="col"
-            style={{ border: "solid 1px", borderColor: "white" }}
-          >
-            col2
-          </div>
-        </div>
-        <div className="row justify-content-center">
-          <div
-            className="col-3"
-            style={{ border: "solid 1px", borderColor: "white" }}
-          >
-            col-3 // -3 smallest
-          </div>
-          <div
-            className="col-3"
-            style={{ border: "solid 1px", borderColor: "white" }}
-          >
-            col-3
-          </div>
-          <div
-            className="col-auto"
-            style={{ border: "solid 1px", borderColor: "white" }}
-          >
-            variable width contentssssssssssss
-          </div>
-        </div>
-      </div> */}
-      {/* || */}
       <div className="container">
         <div
           className="row justify-content-center"
           style={{ marginTop: "20px", marginBottom: "20px" }}
         >
-          {/** */}
           <div className="col-10">
             <Zoom in={true} style={{ transitionDelay: "500ms" }}>
               <img
@@ -185,8 +139,7 @@ function ManageResults({ actions, lolBoards, data, valContent, valBoards }) {
                 style={{ width: "100%", padding: "5px", marginTop: "35px" }}
               ></img>
             </Zoom>
-          </div>{" "}
-          {/** */}
+          </div>
         </div>
       </div>
     </div>
@@ -196,9 +149,8 @@ function ManageResults({ actions, lolBoards, data, valContent, valBoards }) {
 function mapStateToProps(state) {
   return {
     data: state.summoner,
+    valData: state.valorant,
     lolBoards: state.summoner.leaderBoards,
-    valContent: state.valorant.content,
-    valBoards: state.valorant.leaderBoards,
   };
 }
 
