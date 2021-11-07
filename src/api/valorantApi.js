@@ -1,5 +1,5 @@
 import { handleResponse, handleError } from "./apiUtils";
-const apiKey = "RGAPI-e0c88b9c-8172-4bd0-915c-664741f89cd0";
+const apiKey = process.env.REACT_APP_RIOT_API;
 
 export function getContent() {
   let baseUrl = "https://na.api.riotgames.com/val/content/v1/contents";
