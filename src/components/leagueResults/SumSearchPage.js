@@ -42,12 +42,10 @@ function ManageResults({ actions, lolBoards, data, valData }) {
       let acts = valInfo.acts;
       for (let i = acts.length - 1; i >= 0; i--) {
         if (acts[i].isActive && acts[i].type === "act") {
-          // setActid(acts[i].id);
           getValLeaderBoard(acts[i].id);
           break;
         }
       }
-      console.log(valInfo);
     }
   }, [valInfo]);
 
