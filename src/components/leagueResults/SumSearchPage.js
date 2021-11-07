@@ -35,7 +35,6 @@ function ManageResults({ actions, lolBoards, data, valData }) {
     actions.loadLolLeaderBoard();
     //actions.loadValContent();
     getValInfo();
-    console.log(process.env.NODE_ENV);
   }, []);
 
   useEffect(() => {
