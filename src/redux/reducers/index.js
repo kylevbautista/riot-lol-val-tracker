@@ -4,10 +4,12 @@
 import { combineReducers } from "redux";
 import summonerReducer from "./summonerReducer";
 import apiStatusReducer from "./apiStatusReducer";
+import valorantReducer from "./valorantReducer";
 
 const rootReducer = combineReducers({
   // reducing/combining all states into one root state
   summoner: summonerReducer,
+  valorant: valorantReducer,
   apiCallsInProgress: apiStatusReducer,
 });
 

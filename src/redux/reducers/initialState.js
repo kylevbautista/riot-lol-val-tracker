@@ -7,5 +7,10 @@ export default {
     leaderBoards: {},
     error: false,
   },
+  valorant: {
+    content: {},
+    leaderBoards: {},
+    error: false,
+  },
   apiCallsInProgress: 0,
 };
