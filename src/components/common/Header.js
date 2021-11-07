@@ -36,7 +36,9 @@ function Header() {
             <Typography variant="body2" component="div" sx={{ flexGrow: 1 }}>
               Riot Games Stats Tracker
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button disabled color="inherit">
+              Login
+            </Button>
           </Toolbar>
         </AppBar>
       </Box>
