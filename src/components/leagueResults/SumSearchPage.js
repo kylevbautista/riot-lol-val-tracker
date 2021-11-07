@@ -35,6 +35,7 @@ function ManageResults({ actions, lolBoards, data, valData }) {
     actions.loadLolLeaderBoard();
     //actions.loadValContent();
     getValInfo();
+    console.log(process.env.NODE_ENV);
   }, []);
 
   useEffect(() => {
@@ -67,7 +68,6 @@ function ManageResults({ actions, lolBoards, data, valData }) {
       .getLeaderBoards(actid)
       .then((data) => {
         setValLeaderBoards(data);
-        console.log(data);
       })
       .catch((err) => {
         actions.valorantApiError();
