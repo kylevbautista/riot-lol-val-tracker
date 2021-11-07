@@ -1,7 +1,7 @@
 import React from "react";
 
 // components
-import { Zoom, ButtonBase, Button } from "@mui/material";
+import { Zoom, Button } from "@mui/material";
 import WaitLeaderBoard from "../common/WaitLeaderBoard";
 
 function ValLeaderBoard({ data, valLeaderBoards, handleClick }) {

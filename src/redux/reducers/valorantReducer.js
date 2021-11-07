@@ -7,8 +7,10 @@ export default function valorantReducer(state = initialState.valorant, action) {
       return { ...state, content: action.content };
     case types.LOAD_VAL_LEADERBOARDS_SUCCESS:
       return { ...state, leaderBoards: action.leaderBoards };
-    case types.API_CALL_ERROR:
+    case types.VAL_API_CALL_ERROR:
       return { ...state, error: true };
+    case types.USER_LOGOUT:
+      return initialState.valorant;
     default:
       return state;
   }

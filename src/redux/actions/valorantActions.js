@@ -11,7 +11,7 @@ export function loadValorantLeaderBoardSuccess(data) {
 }
 
 export function valorantApiError() {
-  return { type: types.API_CALL_ERROR };
+  return { type: types.VAL_API_CALL_ERROR };
 }
 
 export function loadContent() {
