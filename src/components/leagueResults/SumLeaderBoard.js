@@ -2,7 +2,7 @@ import React from "react";
 
 // components
 import { Zoom, ButtonBase } from "@mui/material";
-import WaitLeaderBoard from "./WaitLeaderBoard";
+import WaitLeaderBoard from "../common/WaitLeaderBoard";
 
 function SumLeaderBoard({ data, lolBoards, handleClick }) {
   return (
@@ -34,14 +34,17 @@ function SumLeaderBoard({ data, lolBoards, handleClick }) {
                   boxShadow: "0 1px 6px 1px black",
                 }}
               >
-                <div className="col-3 border-end">{index + 1}</div>
-                <div className="col-9">
+                <div className="col-2 border-end">{index + 1}</div>
+                <div className="col-7">
                   <ButtonBase
                     onClick={handleClick}
                     value={summoner.summonerName}
                   >
                     {summoner.summonerName}
                   </ButtonBase>
+                </div>
+                <div className="col-3 border-start">
+                  {summoner.leaguePoints} lp
                 </div>
               </div>
             </Zoom>

@@ -2,7 +2,7 @@ import React from "react";
 
 // components
 import { Zoom, ButtonBase } from "@mui/material";
-import WaitLeaderBoard from "./WaitLeaderBoard";
+import WaitLeaderBoard from "../common/WaitLeaderBoard";
 
 function ValLeaderBoard({ data, valLeaderBoards, handleClick }) {
   return (

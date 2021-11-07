@@ -20,7 +20,7 @@ import { useHistory } from "react-router";
 import TextInput from "../TextInput";
 import { Zoom } from "@mui/material";
 import SumLeaderBoard from "./SumLeaderBoard";
-import ValLeaderBoard from "./ValLeaderBoard";
+import ValLeaderBoard from "../valorantResults/ValLeaderBoard";
 import lol_homepage from "./lol-homepage.jpg";
 
 function ManageResults({ actions, lolBoards, data, valData }) {
