@@ -32,7 +32,7 @@ function ValLeaderBoard({ data, valLeaderBoards, handleClick }) {
               >
                 <div className="col-2 border-end">{index + 1}</div>
                 <div className="col-7">
-                  <ButtonBase onClick={handleClick} value={agent.gameName}>
+                  <ButtonBase value={agent.gameName}>
                     {agent.gameName}
                   </ButtonBase>
                 </div>

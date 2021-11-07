@@ -11,7 +11,7 @@ function TextInput({ onChange, value }) {
         className="form-control"
         type="text"
         name="placeholder"
-        placeholder="Search..."
+        placeholder="Search Summoner..."
         onChange={onChange}
         value={value}
       ></input>

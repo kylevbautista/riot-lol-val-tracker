@@ -21,7 +21,7 @@ import TextInput from "../TextInput";
 import { Zoom } from "@mui/material";
 import SumLeaderBoard from "./SumLeaderBoard";
 import ValLeaderBoard from "../valorantResults/ValLeaderBoard";
-import lol_homepage from "./lol-homepage.jpg";
+import MainPageCarousel from "../common/MainPageCarousel";
 
 function ManageResults({ actions, lolBoards, data, valData }) {
   const [summonerName, setSummonerName] = useState("");
@@ -67,6 +67,7 @@ function ManageResults({ actions, lolBoards, data, valData }) {
       .getLeaderBoards(actid)
       .then((data) => {
         setValLeaderBoards(data);
+        console.log(data);
       })
       .catch((err) => {
         actions.valorantApiError();
@@ -125,19 +126,12 @@ function ManageResults({ actions, lolBoards, data, valData }) {
         </form>
       </div>
       <div className="container">
-        <div
-          className="row justify-content-center"
-          style={{ marginTop: "20px", marginBottom: "20px" }}
-        >
-          <div className="col-10">
-            <Zoom in={true} style={{ transitionDelay: "500ms" }}>
-              <img
-                src={lol_homepage}
-                alt="lol-homepage.jpg"
-                style={{ width: "100%", padding: "5px", marginTop: "35px" }}
-              ></img>
-            </Zoom>
-          </div>
+        <div className="row justify-content-center">
+          <Zoom in={true} style={{ transitionDelay: "500ms" }}>
+            <div className="col-12">
+              <MainPageCarousel />
+            </div>
+          </Zoom>
         </div>
       </div>
     </div>
