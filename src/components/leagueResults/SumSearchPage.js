@@ -10,41 +10,81 @@ import { useState, useEffect } from "react";
 import * as userActions from "../../redux/actions/userActions";
 import * as summonerActions from "../../redux/actions/summonerActions";
 import * as valorantActions from "../../redux/actions/valorantActions";
+import * as valorantApi from "../../api/valorantApi";
+import { beginApiCall } from "../../redux/actions/apiStatusAction";
 import { useHistory } from "react-router";
-import lol_homepage from "./lol-homepage.jpg";
 
 // Components
 import TextInput from "../TextInput";
-import WaitLeaderBoard from "./WaitLeaderBoard";
 import { Zoom, ButtonBase } from "@mui/material";
+import SumLeaderBoard from "./SumLeaderBoard";
+import ValLeaderBoard from "./ValLeaderBoard";
+import lol_homepage from "./lol-homepage.jpg";
 
 function ManageResults({ actions, lolBoards, data, valContent, valBoards }) {
   const [summonerName, setSummonerName] = useState("");
   const [actid, setActid] = useState("");
+  const [valInfo, setValInfo] = useState({});
+  const [valLeaderBoards, setValLeaderBoards] = useState({});
   const history = useHistory();
 
   useEffect(() => {
     actions.logout();
     actions.loadLolLeaderBoard();
-    actions.loadValContent();
+    //actions.loadValContent();
+    getValInfo();
   }, []);
+
   useEffect(() => {
-    if (Object.keys(valContent).length > 0) {
-      let acts = valContent.acts;
+    if (Object.keys(valInfo).length > 0) {
+      let acts = valInfo.acts;
       for (let i = acts.length - 1; i >= 0; i--) {
         if (acts[i].isActive && acts[i].type === "act") {
           setActid(acts[i].id);
           break;
         }
       }
+      console.log(valInfo);
     }
-  }, [valContent]);
+  }, [valInfo]);
 
   useEffect(() => {
     if (actid.length > 0) {
-      actions.loadValLeaderBoard(actid);
+      // actions.loadValLeaderBoard(actid);
+      getValLeaderBoard(actid);
     }
   }, [actid]);
+
+  useEffect(() => {
+    if (Object.keys(valLeaderBoards).length > 0) {
+      console.log("leader", valLeaderBoards);
+    }
+  }, [valLeaderBoards]);
+
+  const getValInfo = () => {
+    //actions.startApiCall();
+    valorantApi
+      .getContent()
+      .then((data) => {
+        setValInfo(data);
+      })
+      .catch((err) => {
+        actions.valorantApiError();
+        console.log("getValInfo fail");
+      });
+  };
+
+  const getValLeaderBoard = (actid) => {
+    valorantApi
+      .getLeaderBoards(actid)
+      .then((data) => {
+        setValLeaderBoards(data);
+      })
+      .catch((err) => {
+        actions.valorantApiError();
+        console.log("getValLeaderBoard fail");
+      });
+  };
 
   const handleText = (event) => {
     setSummonerName(event.target.value);
@@ -70,113 +110,17 @@ function ManageResults({ actions, lolBoards, data, valContent, valBoards }) {
           style={{ marginTop: "20px", marginBottom: "20px" }}
         >
           {/* || */}
-          <div className="col-10 col-md-6">
-            {data.error ? (
-              <p>Error Loading LeaderBoard</p>
-            ) : (
-              <p>League of Legends LeaderBoard</p>
-            )}
-            <div
-              className="container"
-              style={{
-                height: "225px",
-                width: "100%",
-                overflowY: "scroll",
-              }}
-            >
-              {Object.keys(lolBoards).length > 0 ? (
-                lolBoards.entries.map((summoner, index) => (
-                  <Zoom
-                    key={summoner.summonerName}
-                    in={true}
-                    style={{ transitionDelay: "250ms" }}
-                  >
-                    <div
-                      className="row p-2 mb-1 rounded"
-                      style={{
-                        backgroundColor: "#222222",
-                        boxShadow: "0 1px 6px 1px black",
-                      }}
-                    >
-                      <div className="col-3 border-end">{index + 1}</div>
-                      <div className="col-9">
-                        <ButtonBase
-                          onClick={handleClick}
-                          value={summoner.summonerName}
-                        >
-                          {summoner.summonerName}
-                        </ButtonBase>
-                      </div>
-                    </div>
-                  </Zoom>
-                ))
-              ) : (
-                <>
-                  <WaitLeaderBoard />
-                  <WaitLeaderBoard />
-                  <WaitLeaderBoard />
-                  <WaitLeaderBoard />
-                  <WaitLeaderBoard />
-                </>
-              )}
-            </div>
-          </div>
+          <SumLeaderBoard
+            data={data}
+            lolBoards={lolBoards}
+            handleClick={handleClick}
+          />
           {/* || */}
-
-          <div className="col-10 col-md-6">
-            {data.error ? (
-              <p>Error Loading LeaderBoard</p>
-            ) : (
-              <p>Valorant LeaderBoard</p>
-            )}
-            <div
-              className="container"
-              style={{
-                height: "225px",
-                width: "100%",
-                overflowY: "scroll",
-              }}
-            >
-              {Object.keys(valBoards).length > 0 ? (
-                valBoards.players.map((agent, index) => (
-                  <Zoom
-                    key={agent.gameName}
-                    in={true}
-                    style={{ transitionDelay: "250ms" }}
-                  >
-                    <div
-                      className="row p-2 mb-1 rounded"
-                      style={{
-                        backgroundColor: "#222222",
-                        boxShadow: "0 1px 6px 1px black",
-                      }}
-                    >
-                      <div className="col-2 border-end">{index + 1}</div>
-                      <div className="col-7">
-                        <ButtonBase
-                          onClick={handleClick}
-                          value={agent.gameName}
-                        >
-                          {agent.gameName}
-                        </ButtonBase>
-                      </div>
-                      <div className="col-3 border-start">
-                        {agent.rankedRating} rr
-                      </div>
-                    </div>
-                  </Zoom>
-                ))
-              ) : (
-                <>
-                  <WaitLeaderBoard />
-                  <WaitLeaderBoard />
-                  <WaitLeaderBoard />
-                  <WaitLeaderBoard />
-                  <WaitLeaderBoard />
-                </>
-              )}
-            </div>
-          </div>
+          <ValLeaderBoard
+            data={data}
+            valLeaderBoards={valLeaderBoards}
+            handleClick={handleClick}
+          />
           {/* || */}
         </div>
         <form onSubmit={handleSearch}>
@@ -277,6 +221,11 @@ function mapDispatchToProps(dispatch) {
         valorantActions.loadLeaderBoard,
         dispatch
       ),
+      valorantApiError: bindActionCreators(
+        valorantActions.valorantApiError,
+        dispatch
+      ),
+      startApiCall: bindActionCreators(beginApiCall, dispatch),
     },
   };
 }
