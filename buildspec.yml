@@ -12,6 +12,8 @@ phases:
       - npm install
   build:
     commands:
+      - echo TESTING...
+      - npm test
       - echo building...
       - npm run build
       - echo invalidating cloudfront cache

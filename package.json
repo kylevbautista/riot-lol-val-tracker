@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "cloudfront-invalidation": "aws cloudfront create-invalidation --distribution-id E22MI2LJJJ0Y9K  --paths '/*'"
   },
