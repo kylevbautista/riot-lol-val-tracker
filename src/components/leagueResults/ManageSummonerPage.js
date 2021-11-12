@@ -12,7 +12,6 @@ import ManageSumMatchList from "./ManageSumMatchList";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Grid } from "@mui/material";
 
 function SummonerData(props) {
   const summonerId = props.match.params.sumName;
