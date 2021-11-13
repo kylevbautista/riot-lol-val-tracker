@@ -6,7 +6,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 function MainPageCarousel() {
   return (
-    <Carousel>
+    <Carousel interval={2000} indicators={false}>
       <Carousel.Item>
         <img className="d-block w-100" src={lol_homepage} alt="First slide" />
       </Carousel.Item>
