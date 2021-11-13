@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import { Grid, Typography, Paper, ButtonBase, Slide } from "@mui/material";
-import shib_coin from "./shib_coin.png";
+import { getChampion } from "../../utils/championSelector";
 
 const Img = styled("img")({
   margin: "auto",
@@ -76,7 +76,7 @@ function SumMatchList({ participants, match, name }) {
                 alignItems="center"
               >
                 <ButtonBase sx={{ width: 115, height: 115 }}>
-                  <Img alt="complex" src={shib_coin} />
+                  <Img alt="complex" src={getChampion(player.championName)} />
                 </ButtonBase>
                 {player.championName}
               </Grid>
