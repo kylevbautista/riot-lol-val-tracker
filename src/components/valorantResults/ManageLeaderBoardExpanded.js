@@ -1,3 +1,7 @@
+/**
+ * Container component for holding logic pertaining to
+ * the Epanded valorant leader board
+ */
 import React from "react";
 import { useState, useEffect } from "react";
 
@@ -7,6 +11,7 @@ import { bindActionCreators } from "redux";
 import * as valorantActions from "../../redux/actions/valorantActions";
 import * as valorantApi from "../../api/valorantApi";
 
+// Components
 import LeaderBoardExpanded from "./LeaderBoardExpanded";
 
 function ManageLeaderBoardExpanded({ actions, valData }) {
