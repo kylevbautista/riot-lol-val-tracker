@@ -16,108 +16,147 @@ const Row = styled.div`
 const Col = styled.div.attrs((props) => ({
   className: props.className,
 }))`
-  border: ${(props) => (props.primary ? "dashed" : "solid")};
+  border: solid;
   margin: 0.2em;
   flex-grow: 1;
-
-  &.poop {
-    background-color: red;
-  }
-  @media only screen and (min-width: 600px) {
-    &.col-s-1 {
+  @media only screen and (min-width: 0px) {
+    &.xs-1 {
       flex-basis: 8.33%;
       flex-grow: 0;
     }
-    &.col-s-2 {
+    &.xs-2 {
       flex-basis: 16.66%;
-      flex-grow: 0;
     }
-    &.col-s-3 {
+    &.xs-3 {
       flex-basis: 25%;
-      flex-grow: 0;
     }
-    &.col-s-4 {
+    &.xs-4 {
       flex-basis: 33.33%;
-      flex-grow: 0;
     }
-    &.col-s-5 {
+    &.xs-5 {
       flex-basis: 41.66%;
-      flex-grow: 0;
     }
-    &.col-s-6 {
+    &.xs-6 {
       flex-basis: 50%;
       flex-grow: 0;
     }
-    &.col-s-7 {
+    &.xs-7 {
       flex-basis: 58.33%;
       flex-grow: 0;
     }
-    &.col-s-8 {
+    &.xs-8 {
       flex-basis: 66.66%;
       flex-grow: 0;
     }
-    &.col-s-9 {
+    &.xs-9 {
       flex-basis: 75%;
       flex-grow: 0;
     }
-    &.col-s-10 {
+    &.xs-10 {
       flex-basis: 83.33%;
       flex-grow: 0;
     }
-    &.col-s-11 {
+    &.xs-11 {
       flex-basis: 91.66%;
       flex-grow: 0;
     }
-    &.col-s-12 {
+    &.xs-12 {
+      flex-basis: 100%;
+      flex-grow: 0;
+    }
+  }
+  @media only screen and (min-width: 576px) {
+    &.sm-1 {
+      flex-basis: 8.33%;
+      flex-grow: 0;
+    }
+    &.sm-2 {
+      flex-basis: 16.66%;
+      flex-grow: 0;
+    }
+    &.sm-3 {
+      flex-basis: 25%;
+      flex-grow: 0;
+    }
+    &.sm-4 {
+      flex-basis: 33.33%;
+      flex-grow: 0;
+    }
+    &.sm-5 {
+      flex-basis: 41.66%;
+      flex-grow: 0;
+    }
+    &.sm-6 {
+      flex-basis: 50%;
+      flex-grow: 0;
+    }
+    &.sm-7 {
+      flex-basis: 58.33%;
+      flex-grow: 0;
+    }
+    &.sm-8 {
+      flex-basis: 66.66%;
+      flex-grow: 0;
+    }
+    &.sm-9 {
+      flex-basis: 75%;
+      flex-grow: 0;
+    }
+    &.sm-10 {
+      flex-basis: 83.33%;
+      flex-grow: 0;
+    }
+    &.sm-11 {
+      flex-basis: 91.66%;
+      flex-grow: 0;
+    }
+    &.sm-12 {
       flex-basis: 100%;
       flex-grow: 0;
     }
   }
   @media only screen and (min-width: 768px) {
-    .box {
-      width: 45%;
-    }
-    &.col-md-1 {
+    &.md-1 {
       flex-basis: 8.33%;
       flex-grow: 0;
     }
-    &.col-md-2 {
+    &.md-2 {
       flex-basis: 16.66%;
     }
-    &.col-md-3 {
+    &.md-3 {
       flex-basis: 25%;
     }
-    &.col-md-4 {
+    &.md-4 {
       flex-basis: 33.33%;
     }
-    &.col-md-5 {
+    &.md-5 {
       flex-basis: 41.66%;
     }
-    &.col-md-6 {
+    &.md-6 {
       flex-basis: 50%;
       flex-grow: 0;
     }
-    &.col-md-7 {
+    &.md-7 {
       flex-basis: 58.33%;
       flex-grow: 0;
     }
-    &.col-md-8 {
+    &.md-8 {
       flex-basis: 66.66%;
       flex-grow: 0;
     }
-    &.col-md-9 {
+    &.md-9 {
       flex-basis: 75%;
       flex-grow: 0;
     }
-    &.col-md-10 {
+    &.md-10 {
       flex-basis: 83.33%;
       flex-grow: 0;
     }
-    &.col-md-11 {
+    &.md-11 {
       flex-basis: 91.66%;
       flex-grow: 0;
     }
-    &.col-md-12 {
+    &.md-12 {
       flex-basis: 100%;
       flex-grow: 0;
     }

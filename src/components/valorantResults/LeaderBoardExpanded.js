@@ -8,9 +8,9 @@ function LeaderBoardExpanded({ data, valLeaderBoards }) {
     <div>
       <GridContainer>
         <Row>
-          <Col className="col-s-1 col-md-10">sdfsd</Col>
-          <Col className="col-s-1">sdfsd</Col>
-          <Col className="col-s-1">sdfsd</Col>
+          <Col className="xs-12 sm-5 md-2">sdfsd</Col>
+          <Col className="xs-12 sm-5 md-2">sdfsd</Col>
+          <Col>sdfsd</Col>
         </Row>
       </GridContainer>
     </div>
