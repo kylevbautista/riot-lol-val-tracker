@@ -161,6 +161,51 @@ export function getChampion(name) {
       return Champions.Olaf;
     case "Orianna":
       return Champions.Orianna;
+
+    case "Pantheon":
+      return Champions.Pantheon;
+    case "Poppy":
+      return Champions.Poppy;
+    case "Quinn":
+      return Champions.Quinn;
+    case "Rammus":
+      return Champions.Rammus;
+    case "RekSai":
+      return Champions.RekSai;
+    case "Renekton":
+      return Champions.Renekton;
+    case "Rengar":
+      return Champions.Rengar;
+    case "Riven":
+      return Champions.Riven;
+    case "Rumble":
+      return Champions.Rumble;
+    case "Ryze":
+      return Champions.Ryze;
+    case "Sejuani":
+      return Champions.Sejuani;
+    case "Shaco":
+      return Champions.Shaco;
+    case "Shen":
+      return Champions.Shen;
+    case "Shyvana":
+      return Champions.Shyvana;
+    case "Singed":
+      return Champions.Singed;
+    case "Sion":
+      return Champions.Sion;
+    case "Sivir":
+      return Champions.Sivir;
+    case "Skarner":
+      return Champions.Skarner;
+    case "Sona":
+      return Champions.Sona;
+    case "Soraka":
+      return Champions.Soraka;
+    case "Swain":
+      return Champions.Swain;
+    case "Syndra":
+      return Champions.Syndra;
     default:
       return shib;
   }

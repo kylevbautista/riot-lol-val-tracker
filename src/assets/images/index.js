@@ -77,6 +77,28 @@ import Nocturne from "./champion-squares-compressed/Nocturne_Square_0-compressor
 import Nunu from "./champion-squares-compressed/Nunu_Square_0-compressor.png";
 import Olaf from "./champion-squares-compressed/Olaf_Square_0-compressor.png";
 import Orianna from "./champion-squares-compressed/Orianna_Square_0-compressor.png";
+import Pantheon from "./champion-squares-compressed/Pantheon_Square_0-compressor.png";
+import Poppy from "./champion-squares-compressed/Poppy_Square_0-compressor.png";
+import Quinn from "./champion-squares-compressed/Quinn_Square_0-compressor.png";
+import Rammus from "./champion-squares-compressed/Rammus_Square_0-compressor.png";
+import RekSai from "./champion-squares-compressed/RekSai_Square_0-compressor.png";
+import Renekton from "./champion-squares-compressed/Renekton_Square_0-compressor.png";
+import Rengar from "./champion-squares-compressed/Rengar_Square_0-compressor.png";
+import Riven from "./champion-squares-compressed/Riven_Square_0-compressor.png";
+import Rumble from "./champion-squares-compressed/Rumble_Square_0-compressor.png";
+import Ryze from "./champion-squares-compressed/Ryze_Square_0-compressor.png";
+import Sejuani from "./champion-squares-compressed/Sejuani_Square_0-compressor.png";
+import Shaco from "./champion-squares-compressed/Shaco_Square_0-compressor.png";
+import Shen from "./champion-squares-compressed/Shen_Square_0-compressor.png";
+import Shyvana from "./champion-squares-compressed/Shyvana_Square_0-compressor.png";
+import Singed from "./champion-squares-compressed/Singed_Square_0-compressor.png";
+import Sion from "./champion-squares-compressed/Sion_Square_0-compressor.png";
+import Sivir from "./champion-squares-compressed/Sivir_Square_0-compressor.png";
+import Skarner from "./champion-squares-compressed/Skarner_Square_0-compressor.png";
+import Sona from "./champion-squares-compressed/Sona_Square_0-compressor.png";
+import Soraka from "./champion-squares-compressed/Soraka_Square_0-compressor.png";
+import Swain from "./champion-squares-compressed/Swain_Square_0-compressor.png";
+import Syndra from "./champion-squares-compressed/Syndra_Square_0-compressor.png";
 
 export {
   Aatrox,
@@ -158,4 +180,26 @@ export {
   Nunu,
   Olaf,
   Orianna,
+  Pantheon,
+  Poppy,
+  Quinn,
+  Rammus,
+  RekSai,
+  Renekton,
+  Rengar,
+  Riven,
+  Rumble,
+  Ryze,
+  Sejuani,
+  Shaco,
+  Shen,
+  Shyvana,
+  Singed,
+  Sion,
+  Sivir,
+  Skarner,
+  Sona,
+  Soraka,
+  Swain,
+  Syndra,
 };
