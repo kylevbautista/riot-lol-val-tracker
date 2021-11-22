@@ -4,6 +4,7 @@ import HomePage from "./HomePage";
 import ManageSummonerPage from "./leagueResults/ManageSummonerPage";
 import { useEffect } from "react";
 import Header from "./common/Header";
+import ManageLeaderBoardExpanded from "./valorantResults/ManageLeaderBoardExpanded";
 
 function App() {
   useEffect(() => {
@@ -21,6 +22,11 @@ function App() {
             component={ManageSummonerPage}
           />
           {/* <Route path="/summoner" component={SummonerPage} /> */}
+          <Route
+            exact
+            path="/ValorantLeaderBoard"
+            component={ManageLeaderBoardExpanded}
+          />
           <Route component={HomePage} />
         </Switch>
       </div>

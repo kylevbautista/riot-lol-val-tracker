@@ -10,7 +10,14 @@ function ValLeaderBoard({ data, valLeaderBoards, handleClick }) {
       {data.error ? (
         <p>Error Loading LeaderBoard</p>
       ) : (
-        <p>Valorant LeaderBoard</p>
+        <p>
+          <a
+            href="/ValorantLeaderBoard"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            Valorant LeaderBoard
+          </a>
+        </p>
       )}
       <div
         className="container"
