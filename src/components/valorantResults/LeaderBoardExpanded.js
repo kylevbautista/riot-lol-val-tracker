@@ -14,24 +14,34 @@ function LeaderBoardExpanded({ data, valLeaderBoards }) {
           <Col>flexbox responsive col</Col>
         </Row>
         <Row>
-          <table
-            style={{ border: "solid", backgroundColor: "light", width: "100%" }}
-          >
-            <thead style={{ border: "solid" }}>
-              <th>Rank</th>
-              <th>Player Name</th>
-              <th>Ranked Rating</th>
-            </thead>
-            <tbody style={{ border: "solid" }}>
-              {valLeaderBoards.players.map((agent, index) => (
-                <tr>
-                  <td>{index + 1}</td>
-                  <td>{agent.gameName}</td>
-                  <td>{agent.rankedRating}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <Col className="xs-12">
+            <table
+              style={{
+                border: "solid",
+                backgroundColor: "light",
+                width: "100%",
+              }}
+            >
+              <thead style={{ border: "solid" }}>
+                <th>Rank</th>
+                <th>Player Name</th>
+                <th>Ranked Rating</th>
+              </thead>
+              <tbody style={{ border: "solid" }}>
+                {Object.keys(valLeaderBoards).length > 0 ? (
+                  valLeaderBoards.players.map((agent, index) => (
+                    <tr key="index">
+                      <td>{index + 1}</td>
+                      <td>{agent.gameName}</td>
+                      <td>{agent.rankedRating}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <>Loading...</>
+                )}
+              </tbody>
+            </table>
+          </Col>
         </Row>
       </GridContainer>
     </div>
