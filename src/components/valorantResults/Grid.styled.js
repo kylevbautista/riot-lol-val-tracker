@@ -3,13 +3,11 @@ import styled from "styled-components";
 const GridContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: solid;
   color: white;
 `;
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
-  border: solid;
   margin: 0.2em;
   justify-content: center;
 `;
