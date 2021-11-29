@@ -16,6 +16,9 @@ function Header() {
   const handleClick = () => {
     history.push("/");
   };
+  const handleLogin = () => {
+    history.push("/login");
+  };
 
   return (
     <div>
@@ -41,7 +44,7 @@ function Header() {
             <Typography variant="body2" component="div" sx={{ flexGrow: 1 }}>
               Riot Games Stats Tracker
             </Typography>
-            <Button disabled color="inherit">
+            <Button onClick={handleLogin} color="inherit">
               Login
             </Button>
           </Toolbar>

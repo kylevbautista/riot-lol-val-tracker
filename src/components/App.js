@@ -5,6 +5,8 @@ import ManageSummonerPage from "./leagueResults/ManageSummonerPage";
 import { useEffect } from "react";
 import Header from "./common/Header";
 import ManageLeaderBoardExpanded from "./valorantResults/ManageLeaderBoardExpanded";
+import ManageLogin from "./authentication/ManageLogin";
+import ManageRegister from "./authentication/ManageRegister";
 
 function App() {
   useEffect(() => {
@@ -27,6 +29,8 @@ function App() {
             path="/ValorantLeaderBoard"
             component={ManageLeaderBoardExpanded}
           />
+          <Route exact path="/login" component={ManageLogin} />
+          <Route exact path="/register" component={ManageRegister} />
           <Route component={HomePage} />
         </Switch>
       </div>

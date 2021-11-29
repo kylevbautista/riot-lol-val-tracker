@@ -23,15 +23,17 @@ function LeaderBoardExpanded({ data, valLeaderBoards }) {
               }}
             >
               <thead style={{ border: "solid" }}>
-                <th>Rank</th>
-                <th>Player Name</th>
-                <th>Ranked Rating</th>
+                <tr>
+                  <th>Rank</th>
+                  <th>Player Name</th>
+                  <th>Ranked Rating</th>
+                </tr>
               </thead>
               <tbody style={{ border: "solid" }}>
                 {Object.keys(valLeaderBoards).length > 0 ? (
                   valLeaderBoards.players.map((agent, index) => (
                     <tr key={index}>
-                      <td>{index + 1}</td>
+                      <td style={{ borderRight: "solid" }}>{index + 1}</td>
                       <td>{agent.gameName}</td>
                       <td>{agent.rankedRating}</td>
                     </tr>
