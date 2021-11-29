@@ -35,25 +35,50 @@ function ManageRegister() {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  const handleRegister = () => {
-    history.push("/register");
+  const register = async (info) => {
+    try {
+      const res = await fetch("http://localhost:3001/auth/register", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(info),
+      });
+      const data = await res.json();
+      console.log(data);
+      if (res.ok) {
+        history.push("/");
+      } else {
+        alert("Account already exists");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (email === "") {
       console.log("email empty");
+      return;
     }
     if (username === "") {
       console.log("username empty");
+      return;
     }
     if (password === "") {
       console.log("password empty");
+      return;
     }
-    console.log("submit form");
-    console.log("username", username);
-    console.log("email", email);
-    console.log("password", password);
+    const info = {
+      name: username,
+      email: email,
+      password: password,
+    };
+    if (process.env.NODE_ENV === "development") {
+      register(info);
+    }
   };
   const handleChange = (event) => {
     if (event.target.id === "username") {
@@ -93,7 +118,7 @@ function ManageRegister() {
           <div>
             <Input
               onChange={handleChange}
-              type="input"
+              type="password"
               placeholder="password..."
               name="password"
               id="password"
