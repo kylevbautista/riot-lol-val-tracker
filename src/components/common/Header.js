@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import {
   AppBar,
   Box,
@@ -19,6 +20,16 @@ function Header() {
   const handleLogin = () => {
     history.push("/login");
   };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <div>
@@ -44,9 +55,19 @@ function Header() {
             <Typography variant="body2" component="div" sx={{ flexGrow: 1 }}>
               Riot Games Stats Tracker
             </Typography>
-            <Button onClick={handleLogin} color="inherit">
-              Login
-            </Button>
+            {!isLoggedIn && (
+              <Button onClick={handleLogin} color="inherit">
+                Login
+              </Button>
+            )}
+            {isLoggedIn && (
+              <>
+                <Button color="inherit">Profile</Button>
+                <Button onClick={handleLogout} color="inherit">
+                  Logout
+                </Button>
+              </>
+            )}
           </Toolbar>
         </AppBar>
       </Box>

@@ -1,0 +1,16 @@
+#login {
+  width: 90%;
+}
+.lmao {
+  display: flex;
+  margin-top: 1.5em;
+  justify-content: flex-end;
+}
+.new-user {
+  font-size: 12px;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+.new-user a {
+  text-decoration: none;
+}

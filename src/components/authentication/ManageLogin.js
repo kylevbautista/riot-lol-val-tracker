@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router";
+import "./Login.css";
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ const Form = styled.form`
   box-shadow: "0 1px 6px 1px black";
 `;
 const Input = styled.input`
-  width: 80%;
+  width: 90%;
   margin: 1.5em;
 `;
 
@@ -38,8 +39,23 @@ function ManageLogin() {
   const handleRegister = () => {
     history.push("/register");
   };
-
-  const handleSubmit = (event) => {
+  const auth = async (body) => {
+    console.log("bd", body);
+    try {
+      const res = await fetch("http://localhost:3001/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json();
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (email === "") {
       console.log("email empty");
@@ -54,6 +70,15 @@ function ManageLogin() {
     console.log("username", username);
     console.log("email", email);
     console.log("password", password);
+    const data = await auth({ name: "ightt", password: "123" });
+    if (data.token) {
+      console.log(data.token);
+      localStorage.setItem("token", data.token);
+      history.push("/");
+      //localStorage.removeItem("token");
+    } else {
+      console.log("login failed");
+    }
   };
   const handleChange = (event) => {
     if (event.target.id === "username") {
@@ -99,16 +124,17 @@ function ManageLogin() {
               id="password"
             ></Input>
           </div>
-          <button type="submit" class="btn btn-outline-light">
-            Login
-          </button>
-          <button
-            onClick={handleRegister}
-            type="button"
-            class="btn btn-outline-success"
-          >
-            Register
-          </button>
+          <div id="ok">
+            <button id="login" type="submit" class="btn btn-outline-light">
+              Login
+            </button>
+          </div>
+          <div class="lmao">
+            <div class="new-user">
+              <span>New? </span>
+              <a href="/register">Sign Up Here</a>
+            </div>
+          </div>
         </Form>
       </FormWrapper>
     </Wrapper>
