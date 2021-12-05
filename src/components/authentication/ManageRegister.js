@@ -1,7 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router";
+import { registerUser } from "../../api/auth/registerApi";
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,29 +36,7 @@ function ManageRegister() {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  const register = async (info) => {
-    try {
-      const res = await fetch("http://localhost:3001/auth/register", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(info),
-      });
-      const data = await res.json();
-      console.log(data);
-      if (res.ok) {
-        history.push("/");
-      } else {
-        alert("Account already exists");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (email === "") {
       console.log("email empty");
@@ -77,7 +56,13 @@ function ManageRegister() {
       password: password,
     };
     if (process.env.NODE_ENV === "development") {
-      register(info);
+      const res = await registerUser(info);
+      if (res.message === undefined) {
+        history.push("/");
+      } else {
+        // replace with toastify
+        alert("User Already Exists");
+      }
     }
   };
   const handleChange = (event) => {

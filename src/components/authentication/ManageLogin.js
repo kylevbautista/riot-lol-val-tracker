@@ -96,7 +96,7 @@ function ManageLogin({ isLoggedIn, actions }) {
           <div>
             <Input
               onChange={handleChange}
-              type="input"
+              type="password"
               placeholder="password..."
               name="password"
               id="password"

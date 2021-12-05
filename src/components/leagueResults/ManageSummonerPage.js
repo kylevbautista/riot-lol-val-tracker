@@ -34,13 +34,6 @@ function SummonerData(props) {
   const getSummonerMatchIds = (puuid) => {
     props.actions.getMatchList(puuid);
   };
-  const handleFollow = () => {
-    if (props.isLoggedIn) {
-      //do something
-    } else {
-      alert("Login to Add");
-    }
-  };
 
   return (
     <div>
@@ -49,7 +42,7 @@ function SummonerData(props) {
         <h1 style={{ color: "white" }}>OOPS.... SOMETHING WENT WRONG</h1>
       )}
       {Object.keys(props.summoner.data).length > 0 ? (
-        <SumInfo info={props.summoner.data} handleFollow={handleFollow} />
+        <SumInfo info={props.summoner.data} isLoggedIn={props.isLoggedIn} />
       ) : props.summoner.error ? (
         <></>
       ) : (
