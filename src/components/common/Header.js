@@ -9,6 +9,7 @@ import {
   IconButton,
   Badge,
 } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import HomeIcon from "@mui/icons-material/Home";
 import { useHistory } from "react-router";
 // redux
@@ -23,6 +24,9 @@ function Header({ isLoggedIn, actions }) {
   };
   const handleLogin = () => {
     history.push("/login");
+  };
+  const handleRegister = () => {
+    history.push("/register");
   };
   const handleLogout = () => {
     actions.logout();
@@ -61,13 +65,33 @@ function Header({ isLoggedIn, actions }) {
               Riot Games Stats Tracker
             </Typography>
             {!isLoggedIn && (
-              <Button onClick={handleLogin} color="inherit">
-                Login
-              </Button>
+              <>
+                <Button onClick={handleLogin} color="inherit">
+                  Login
+                </Button>
+                <Button onClick={handleRegister} color="inherit">
+                  Sign Up
+                </Button>
+              </>
             )}
             {isLoggedIn && (
               <>
-                <Button color="inherit">Profile</Button>
+                <IconButton
+                  size="large"
+                  edge="start"
+                  aria-label="Nav-Bar homepage"
+                  color="inherit"
+                  onClick={handleClick}
+                  sx={{
+                    ":hover": {
+                      bgcolor: "#404040",
+                    },
+                  }}
+                >
+                  <Badge badgeContent={0} color="error">
+                    <AccountCircleIcon />
+                  </Badge>
+                </IconButton>
                 <Button onClick={handleLogout} color="inherit">
                   Logout
                 </Button>

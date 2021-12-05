@@ -204,8 +204,12 @@ function SumInfo({ info, rank, exists, ...props }) {
                     justifyContent: "center",
                   }}
                 >
-                  <ButtonBase sx={{ width: 65, height: 65 }}>
+                  <ButtonBase
+                    onClick={props.handleFollow}
+                    sx={{ width: "100%", height: 65 }}
+                  >
                     <Img alt="complex" src={shib_coin} />
+                    <div>Click to follow</div>
                   </ButtonBase>
                 </Grid>
                 {/* <Grid item container xs={6}>
