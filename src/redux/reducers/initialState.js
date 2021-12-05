@@ -13,4 +13,5 @@ export default {
     error: false,
   },
   apiCallsInProgress: 0,
+  isLoggedIn: false,
 };

@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router";
 import "./Login.css";
+// redux
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as userLActions from "../../redux/actions/userLActions";
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,31 +34,16 @@ const Label = styled.label`
   display: block;
 `;
 
-function ManageLogin() {
+function ManageLogin({ isLoggedIn, actions }) {
   const [email, setEmail] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  const handleRegister = () => {
-    history.push("/register");
-  };
-  const auth = async (body) => {
-    console.log("bd", body);
-    try {
-      const res = await fetch("http://localhost:3001/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-      const data = await res.json();
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleRegister = () => {
+  //   history.push("/register");
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (email === "") {
@@ -66,19 +55,11 @@ function ManageLogin() {
     if (password === "") {
       console.log("password empty");
     }
-    console.log("submit form");
-    console.log("username", username);
-    console.log("email", email);
-    console.log("password", password);
-    const data = await auth({ name: "ightt", password: "123" });
-    if (data.token) {
-      console.log(data.token);
-      localStorage.setItem("token", data.token);
-      history.push("/");
-      //localStorage.removeItem("token");
-    } else {
-      console.log("login failed");
-    }
+    // console.log("submit form");
+    // console.log("username", username);
+    // console.log("email", email);
+    // console.log("password", password);
+    actions.login({ name: username, password: password });
   };
   const handleChange = (event) => {
     if (event.target.id === "username") {
@@ -91,6 +72,12 @@ function ManageLogin() {
       setPassword(event.target.value);
     }
   };
+  useEffect(() => {
+    if (isLoggedIn === true) {
+      history.push("/");
+    }
+    //console.log("login status", isLoggedIn);
+  }, [isLoggedIn]);
 
   return (
     <Wrapper>
@@ -98,15 +85,6 @@ function ManageLogin() {
         <Form onSubmit={handleSubmit}>
           <div>
             <Label>Login</Label>
-            <Input
-              onChange={handleChange}
-              type="input"
-              placeholder="email..."
-              name="email"
-              id="email"
-            ></Input>
-          </div>
-          <div>
             <Input
               onChange={handleChange}
               type="input"
@@ -141,4 +119,19 @@ function ManageLogin() {
   );
 }
 
-export default ManageLogin;
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.isLoggedIn,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      login: bindActionCreators(userLActions.login, dispatch),
+      logout: bindActionCreators(userLActions.logoutSucces, dispatch),
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageLogin);

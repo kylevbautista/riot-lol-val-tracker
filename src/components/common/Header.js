@@ -11,8 +11,12 @@ import {
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import { useHistory } from "react-router";
+// redux
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as userLActions from "../../redux/actions/userLActions";
 
-function Header() {
+function Header({ isLoggedIn, actions }) {
   const history = useHistory();
   const handleClick = () => {
     history.push("/");
@@ -21,15 +25,16 @@ function Header() {
     history.push("/login");
   };
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
+    actions.logout();
   };
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setIsLoggedIn(true);
+    const token = localStorage.getItem("token");
+    if (token !== "undefined" && token !== "null" && token !== null) {
+      if (!isLoggedIn) {
+        actions.login({ token: localStorage.getItem("token") });
+      }
     }
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <div>
@@ -75,4 +80,19 @@ function Header() {
   );
 }
 
-export default Header;
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.isLoggedIn,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      logout: bindActionCreators(userLActions.logoutSucces, dispatch),
+      login: bindActionCreators(userLActions.loginSuccess, dispatch),
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

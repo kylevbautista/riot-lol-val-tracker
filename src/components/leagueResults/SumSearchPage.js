@@ -12,6 +12,7 @@ import { useState, useEffect } from "react";
 import * as userActions from "../../redux/actions/userActions";
 import * as summonerActions from "../../redux/actions/summonerActions";
 import * as valorantActions from "../../redux/actions/valorantActions";
+import * as userLActions from "../../redux/actions/userLActions";
 import * as valorantApi from "../../api/valorantApi";
 import { beginApiCall } from "../../redux/actions/apiStatusAction";
 import { useHistory } from "react-router";
@@ -23,7 +24,7 @@ import SumLeaderBoard from "./SumLeaderBoard";
 import ValLeaderBoard from "../valorantResults/ValLeaderBoard";
 import MainPageCarousel from "../common/MainPageCarousel";
 
-function ManageResults({ actions, lolBoards, data, valData }) {
+function ManageResults({ actions, lolBoards, data, valData, isLoggedIn }) {
   const [summonerName, setSummonerName] = useState("");
   // const [actid, setActid] = useState("");
   const [valInfo, setValInfo] = useState({});
@@ -142,6 +143,7 @@ function mapStateToProps(state) {
     data: state.summoner,
     valData: state.valorant,
     lolBoards: state.summoner.leaderBoards,
+    isLoggedIn: state.isLoggedin,
   };
 }
 
@@ -163,6 +165,7 @@ function mapDispatchToProps(dispatch) {
         dispatch
       ),
       startApiCall: bindActionCreators(beginApiCall, dispatch),
+      login: bindActionCreators(userLActions.loginSuccess, dispatch),
     },
   };
 }
