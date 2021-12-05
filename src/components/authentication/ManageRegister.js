@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router";
 import { registerUser } from "../../api/auth/registerApi";
+import { toast } from "react-toastify";
 
 const Wrapper = styled.div`
   display: flex;
@@ -61,7 +62,7 @@ function ManageRegister() {
         history.push("/");
       } else {
         // replace with toastify
-        alert("User Already Exists");
+        toast.error("User Already Exists");
       }
     }
   };

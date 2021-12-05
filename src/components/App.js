@@ -7,6 +7,8 @@ import Header from "./common/Header";
 import ManageLeaderBoardExpanded from "./valorantResults/ManageLeaderBoardExpanded";
 import ManageLogin from "./authentication/ManageLogin";
 import ManageRegister from "./authentication/ManageRegister";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   useEffect(() => {
@@ -33,6 +35,7 @@ function App() {
           <Route exact path="/register" component={ManageRegister} />
           <Route component={HomePage} />
         </Switch>
+        <ToastContainer autoClose={3000} hideProgressBar />
       </div>
     </div>
   );

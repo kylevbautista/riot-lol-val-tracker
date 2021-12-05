@@ -40,10 +40,6 @@ function ManageLogin({ isLoggedIn, actions }) {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  // const handleRegister = () => {
-  //   history.push("/register");
-  // };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (email === "") {
@@ -55,10 +51,6 @@ function ManageLogin({ isLoggedIn, actions }) {
     if (password === "") {
       console.log("password empty");
     }
-    // console.log("submit form");
-    // console.log("username", username);
-    // console.log("email", email);
-    // console.log("password", password);
     actions.login({ name: username, password: password });
   };
   const handleChange = (event) => {

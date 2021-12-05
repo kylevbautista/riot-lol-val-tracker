@@ -8,6 +8,7 @@ import { styled } from "@mui/material/styles";
 import { Grid, Paper, ButtonBase, Grow } from "@mui/material";
 import shib_coin from "./shib_coin.png";
 import { addToFollow } from "../../api/auth/followsApi";
+import { toast } from "react-toastify";
 
 const Img = styled("img")({
   margin: "auto",
@@ -47,13 +48,13 @@ function SumInfo({ info, rank, exists, ...props }) {
       const res = await addToFollow({ name: info.name });
       console.log("res", res);
       if (res.status) {
-        alert(res.status);
+        toast.error(res.status);
       }
       if (res.modifiedCount) {
-        alert("added to follow list");
+        toast.success("added to follow list");
       }
     } else {
-      alert("Login to Add");
+      toast.error("Login to Add");
     }
   };
 

@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const loginUser = async (body) => {
   try {
     const res = await fetch("http://localhost:3001/auth/login", {
@@ -12,8 +14,11 @@ export const loginUser = async (body) => {
       return data;
     }
     const data = await res.json();
+    toast.error(data.message);
     throw new Error(data.message);
   } catch (err) {
     console.log(err);
+    toast.error(err);
+    return { error: err };
   }
 };

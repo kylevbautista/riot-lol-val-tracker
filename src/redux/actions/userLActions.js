@@ -17,7 +17,11 @@ export function login(info) {
   return (dispatch) => {
     loginUser(info)
       .then((data) => {
-        dispatch(loginSuccess(data));
+        if (data.error) {
+          throw data.error;
+        } else {
+          dispatch(loginSuccess(data));
+        }
       })
       .catch((err) => {
         console.log(err);
