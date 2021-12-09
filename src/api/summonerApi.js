@@ -4,7 +4,7 @@ const baseUrl =
 const apiKey = "RGAPI-5e017836-a1a0-4e29-8e5c-3e0aa2650b9c";
 //const apiKey = process.env.REACT_APP_RIOT_API;
 
-// Get summoner data given a name
+// GET summoner data given a name
 export const byName = async (name) => {
   let url = `${baseUrl}${name}?api_key=${apiKey}`;
   const response = await fetch(url);
@@ -12,7 +12,7 @@ export const byName = async (name) => {
   return data;
 };
 
-// Get 20 most recent match id's for a summoner given a summoner's puuid
+// GET 20 most recent match id's for a summoner given a summoner's puuid
 export const getMatchIds = async (puuid) => {
   let baseUrl =
     "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/";
@@ -22,7 +22,7 @@ export const getMatchIds = async (puuid) => {
   return data;
 };
 
-// Get the match details for a given match id
+// GET the match details for a given match id
 export const getMatchData = async (matchId) => {
   let baseUrl = "https://americas.api.riotgames.com/lol/match/v5/matches/";
   let url = `${baseUrl}${matchId}?api_key=${apiKey}`;
