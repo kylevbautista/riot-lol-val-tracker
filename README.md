@@ -14,11 +14,11 @@
 - [x] Determine whether or not all state mangagement is fine with React's useState only
 - [x] Implement Redux and determine whether this is easier to manage and offers better scalability
 - [x] Research and Implement styled components
+- [x] Implement User Accounts
+- [x] Research .NET Core
 - [] Create mock DB with Express for testing purposes
-- [] Research .NET Core
 - [] Research DynamoDB
 - [] Develop .NET Core API to use with DynamoDB
-- [] Implement User Accounts
 - [] Research Service oriented architecture
 
 ### Things to keep in mind
