@@ -1,7 +1,7 @@
 import { handleResponse } from "./apiUtils";
 const baseUrl =
   "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
-const apiKey = "RGAPI-50000baa-9844-4840-aaf6-19c52be9a214";
+const apiKey = "RGAPI-927b7b76-7b89-438f-b76f-4c4488d4832d";
 //const apiKey = process.env.REACT_APP_RIOT_API;
 
 // GET summoner data given a name
