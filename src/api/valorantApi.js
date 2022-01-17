@@ -1,5 +1,5 @@
 import { handleResponse, handleError } from "./apiUtils";
-const apiKey = "RGAPI-2ca44cfa-bb0d-445c-9203-3b94c5d80d1b";
+const apiKey = "RGAPI-7c145d2b-b77f-401c-bdb3-852784658d44";
 //const apiKey = process.env.REACT_APP_RIOT_API;
 
 export const getContent = async () => {
