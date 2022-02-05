@@ -16,10 +16,16 @@
 - [x] Research and Implement styled components
 - [x] Implement User Accounts
 - [x] Research .NET Core
-- [] Create mock DB with Express for testing purposes
-- [] Research DynamoDB
-- [] Develop .NET Core API to use with DynamoDB
-- [] Research Service oriented architecture
+- [x] Create mock DB with Express for testing purposes
+- [x] Research DynamoDB
+- [x] Develop .NET Core API to use with DynamoDB
+- [x] Research Service oriented architecture
+- [] Research Typescript
+- [] Implememt Typescript
+- [] Research Apollo GraphQL
+- [] Implement Apollo GraphQL
+- [] Research Emotion styled components
+- [] Implement Emotion styled components
 
 ### Things to keep in mind
 
